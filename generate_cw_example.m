@@ -1,16 +1,14 @@
 %% GENERATE_CW_EXAMPLE
-% Final CW dataset sample: T/S/depth -> SSP -> Bellhop -> .arr -> WAV
-% -> JSON metadata -> manifest.jsonl. All paths are relative to this file.
 
 clear; clc; close all;
 
-%% Paths and local Bellhop dependencies
+%% 路径与本地 Bellhop 依赖配置
 root = fileparts(mfilename('fullpath'));
 tool = fullfile(root, 'bellhop_tools');
 out = fullfile(root, 'output', 'cw_bellhop_demo');
 
 if ~exist(out, 'dir'), mkdir(out); end
-% Put the local bundle first so it cannot be shadowed by another Bellhop copy.
+% 把本地工具包置顶加入搜索路径，防止被其他版本的 Bellhop 同名函数遮蔽
 addpath(tool, '-begin');
 
 %% Dataset parameters
@@ -19,10 +17,9 @@ rng(20260919, 'twister');
 fs = 16000;                 % Hz
 dur = 5;                    % seconds
 snrDb = 10;                 % received SNR (dB)
-makePlots = true;           % save SSP, arrival, ray, and spectrogram figures
+makePlots = true;           % 是否保存诊断图（SSP/到达/声线图/频谱图）
 
-% Source is separate from the propagation chain.  To change the source,
-% only replace this structure; see generate_signal.m for LFM/FSK examples.
+%%make signal
 sig = struct('type', 'CW', 'carrier_hz', 3200, ...
     'start_time_s', 1.0, 'pulse_width_s', 2.5, 'fade_s', 0.02);
 fc = signal_center_frequency(sig); % Bellhop centre frequency (Hz)
@@ -35,13 +32,13 @@ sd = 20;                     % source depth (m)
 rd = 50;                     % receiver depth (m)
 rr = 1.0;                    % receiver range (km)
 
-assert(fc < fs/2, 'fc must be below the Nyquist frequency.');
+assert(fc < fs/2, 'fc must be below the Nyquist frequency.'); % 载频必须低于奈奎斯特频率，防混叠
 
 %% 1. Build the structures 
 
 [SSP, Bdry, Pos, Beam, cInt, RMax, c] = build_ssp(z, temp, salt, sd, rd, rr);
 
-%% 2. Official Bellhop environment writer, solver, and arrivals reader.
+%% 2. 写入器 + 求解器 + 到达读取器
 env = fullfile(out, [id '.env']);
 arr = fullfile(out, [id '.arr']);
 write_env(env, 'BELLHOP', 'CW sample with T/S/depth SSP', fc, ...
@@ -53,6 +50,7 @@ cd(out);                     % Bellhop writes files into its current folder.
 bellhop(id);                 % local bellhop.m + bellhop.exe
 assert(isfile(arr), 'Bellhop did not generate %s.', arr);
 
+%解析 .arr：Arr 含各路径的时延和复振幅
 [Arr, ~] = read_arrivals_local(arr, 500); % local copy, avoids name collisions
 
 %% 3. Generate the transmitted signal.
