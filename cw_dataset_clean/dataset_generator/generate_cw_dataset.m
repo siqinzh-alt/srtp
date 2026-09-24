@@ -1,17 +1,12 @@
 function manifest = generate_cw_dataset()
-%GENERATE_CW_DATASET Create a small, extensible CW Bellhop dataset.
-%   This driver defines only the parameter set.  The common synthesis,
-%   Bellhop propagation, WAV, spectrogram, JSON and manifest work are in
-%   generate_bellhop_sample.m.  Add more entries to samples to scale up.
 
 root = fileparts(fileparts(mfilename('fullpath')));
-addpath(fullfile(root, 'bellhop_tools'), '-begin');
 
-datasetName = 'cw_two_sample_demo';
+datasetName = '_sample_demo';
 dataRoot = fullfile(root, 'output', 'datasets', datasetName);
 manifest = fullfile(dataRoot, 'manifest.jsonl');
 if ~exist(dataRoot, 'dir'), mkdir(dataRoot); end
-numSamples = 2;              % Change this number for a larger CW dataset.
+numSamples = 3;              % Change this number for a larger CW dataset.
 
 % The manifest is rebuilt from the parameter list below on every run.
 fid = fopen(manifest, 'w');
