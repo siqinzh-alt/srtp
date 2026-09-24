@@ -1,7 +1,7 @@
  BELLHOP/BELLHOP3D
 
- BELLHOP- cw_000001                                                              
- frequency =   3892.     Hz
+ BELLHOP- cw_000003                                                              
+ frequency =   3077.     Hz
 
  Dummy parameter NMedia =            1
 
@@ -14,13 +14,13 @@
  Sound speed profile:
    z (m)     alphaR (m/s)   betaR  rho (g/cm^3)  alphaI     betaI
 
-      0.00      1528.96      0.00     1.00       0.0000    0.0000
-     10.00      1525.14      0.00     1.00       0.0000    0.0000
-     20.00      1521.14      0.00     1.00       0.0000    0.0000
-     40.00      1517.10      0.00     1.00       0.0000    0.0000
-     60.00      1512.87      0.00     1.00       0.0000    0.0000
-     80.00      1508.44      0.00     1.00       0.0000    0.0000
-    100.00      1503.79      0.00     1.00       0.0000    0.0000
+      0.00      1535.02      0.00     1.00       0.0000    0.0000
+     10.00      1530.52      0.00     1.00       0.0000    0.0000
+     20.00      1525.76      0.00     1.00       0.0000    0.0000
+     40.00      1520.88      0.00     1.00       0.0000    0.0000
+     60.00      1515.72      0.00     1.00       0.0000    0.0000
+     80.00      1510.26      0.00     1.00       0.0000    0.0000
+    100.00      1504.48      0.00     1.00       0.0000    0.0000
 
                                  ( RMS roughness =   0.00     )
      ACOUSTO-ELASTIC half-space
@@ -31,15 +31,15 @@
 
  Number of source   depths =            1
  Source depths (m)
-   60.0000    
+   40.0000    
 
  Number of receiver depths =            1
  Receiver depths (m)
-   10.0000    
+   40.0000    
 
  Number of receiver ranges =            1
  Receiver ranges (km)
-  0.506809    
+   1.18289    
 
  Arrivals calculation, ASCII  file output
  Geometric hat beams in Cartesian coordinates
@@ -61,7 +61,7 @@
  Step length,      deltas =    0.0000000000000000      m
 
  Maximum ray depth, Box%z =    110.00000000000000      m
- Maximum ray range, Box%r =    706.80899999999997      m
+ Maximum ray range, Box%r =    1382.8899999999999      m
  No beam shift in effect
 
 
@@ -72,8 +72,8 @@
 Tracing beam       1    -30.00
 
  Geometic hat beams                      
- halfwidth  =    11.815450598431362     
- epsilonOpt =  (  0.0000000000000000     ,  1706959.7542911912     )
+ halfwidth  =    15.024117170421643     
+ epsilonOpt =  (  0.0000000000000000     ,  2182002.7459041537     )
  EpsMult    =    1.0000000000000000     
 
 Tracing beam       3    -28.80
