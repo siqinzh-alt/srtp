@@ -1,0 +1,7 @@
+accelerate==1.5.2
+bitsandbytes==0.45.5
+peft==0.15.2
+pillow
+qwen-vl-utils==0.0.14
+tqdm
+transformers==4.51.3

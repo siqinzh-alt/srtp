@@ -1,0 +1,286 @@
+===== 2026-09-30 21:31:31 env =====
+Python 3.10.8
+torch 2.1.2+cu121 12.1 True
+gpu NVIDIA GeForce RTX 4080 SUPER
+transformers OK
+accelerate OK
+sentencepiece OK
+soundfile OK
+torchaudio MISSING
+===== 2026-09-30 21:31:33 install minimal missing deps =====
+missing: none
+===== 2026-09-30 21:31:33 write lightweight evaluator =====
+===== 2026-09-30 21:31:33 post deps =====
+transformers OK
+accelerate OK
+sentencepiece OK
+soundfile OK
+torchaudio MISSING
+cuda True NVIDIA GeForce RTX 4080 SUPER
+===== 2026-09-30 21:31:35 dataset check =====
+items 222
+wav_files 126
+first signal_type_choice audio/probe_000001.wav
+===== 2026-09-30 21:31:35 smoke Qwen2-Audio =====
+/root/miniconda3/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+Downloading shards:   0%|          | 0/5 [00:00<?, ?it/s]Downloading shards:  20%|██        | 1/5 [05:37<22:30, 337.57s/it]Downloading shards:  40%|████      | 2/5 [10:45<15:59, 319.90s/it]Downloading shards:  60%|██████    | 3/5 [15:43<10:19, 309.95s/it]Downloading shards:  80%|████████  | 4/5 [20:39<05:04, 304.42s/it]Downloading shards: 100%|██████████| 5/5 [22:21<00:00, 231.40s/it]Downloading shards: 100%|██████████| 5/5 [22:21<00:00, 268.22s/it]
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:08<00:33,  8.27s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:14<00:20,  6.98s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:19<00:12,  6.07s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:23<00:05,  5.14s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:23<00:00,  3.56s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:23<00:00,  4.76s/it]
+zero-shot eval:   0%|          | 0/5 [00:00<?, ?it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+Starting from v4.46, the `logits` model output will have the same type as the model (except at train time, where it will always be FP32)
+We detected that you are passing `past_key_values` as a tuple of tuples. This is deprecated and will be removed in v4.47. Please convert your cache or use an appropriate `Cache` class (https://huggingface.co/docs/transformers/kv_cache#legacy-cache-format)
+zero-shot eval:  20%|██        | 1/5 [00:01<00:04,  1.02s/it]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  40%|████      | 2/5 [00:01<00:01,  1.84it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  60%|██████    | 3/5 [00:01<00:00,  2.68it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  80%|████████  | 4/5 [00:01<00:00,  3.29it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval: 100%|██████████| 5/5 [00:01<00:00,  3.93it/s]zero-shot eval: 100%|██████████| 5/5 [00:01<00:00,  2.83it/s]
+{"correct": 0, "total": 5, "accuracy": 0.0}
+Predictions: output/zero_shot_probe/v1/qwen2audio_smoke_predictions.jsonl
+Summary: output/zero_shot_probe/v1/qwen2audio_smoke_summary.json
+===== 2026-09-30 21:54:57 full Qwen2-Audio =====
+/root/miniconda3/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+Downloading shards:   0%|          | 0/5 [00:00<?, ?it/s]Downloading shards: 100%|██████████| 5/5 [00:00<00:00, 18724.57it/s]
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:04<00:19,  4.83s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:09<00:13,  4.46s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:13<00:08,  4.35s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:17<00:04,  4.14s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:18<00:00,  3.02s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:18<00:00,  3.62s/it]
+zero-shot eval:   0%|          | 0/222 [00:00<?, ?it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+Starting from v4.46, the `logits` model output will have the same type as the model (except at train time, where it will always be FP32)
+We detected that you are passing `past_key_values` as a tuple of tuples. This is deprecated and will be removed in v4.47. Please convert your cache or use an appropriate `Cache` class (https://huggingface.co/docs/transformers/kv_cache#legacy-cache-format)
+zero-shot eval:   0%|          | 1/222 [00:00<02:57,  1.25it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:   1%|          | 2/222 [00:01<01:40,  2.19it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:   1%|▏         | 3/222 [00:01<01:10,  3.10it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:   2%|▏         | 4/222 [00:01<00:59,  3.64it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:   2%|▏         | 5/222 [00:01<00:51,  4.23it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:   3%|▎         | 6/222 [00:01<00:48,  4.42it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:   3%|▎         | 7/222 [00:01<00:44,  4.81it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:   4%|▎         | 8/222 [00:02<00:43,  4.89it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:   4%|▍         | 9/222 [00:02<00:41,  5.08it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:   5%|▍         | 10/222 [00:02<00:43,  4.85it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:   5%|▍         | 11/222 [00:02<00:40,  5.16it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:   5%|▌         | 12/222 [00:02<00:42,  4.93it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:   6%|▌         | 13/222 [00:03<00:40,  5.15it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:   6%|▋         | 14/222 [00:03<00:40,  5.13it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:   7%|▋         | 15/222 [00:03<00:38,  5.37it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:   7%|▋         | 16/222 [00:03<00:39,  5.27it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:   8%|▊         | 17/222 [00:03<00:37,  5.47it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:   8%|▊         | 18/222 [00:04<00:39,  5.13it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:   9%|▊         | 19/222 [00:04<00:37,  5.37it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:   9%|▉         | 20/222 [00:04<00:38,  5.27it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:   9%|▉         | 21/222 [00:04<00:36,  5.46it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  10%|▉         | 22/222 [00:04<00:37,  5.29it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  10%|█         | 23/222 [00:04<00:36,  5.50it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  11%|█         | 24/222 [00:05<00:38,  5.13it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  11%|█▏        | 25/222 [00:05<00:36,  5.36it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  12%|█▏        | 26/222 [00:05<00:38,  5.05it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  12%|█▏        | 27/222 [00:05<00:36,  5.30it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  13%|█▎        | 28/222 [00:05<00:37,  5.18it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  13%|█▎        | 29/222 [00:06<00:35,  5.41it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  14%|█▎        | 30/222 [00:06<00:37,  5.08it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  14%|█▍        | 31/222 [00:06<00:39,  4.78it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  14%|█▍        | 32/222 [00:06<00:40,  4.66it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  15%|█▍        | 33/222 [00:06<00:37,  4.99it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  15%|█▌        | 34/222 [00:07<00:38,  4.82it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  16%|█▌        | 35/222 [00:07<00:36,  5.09it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  16%|█▌        | 36/222 [00:07<00:36,  5.07it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  17%|█▋        | 37/222 [00:07<00:35,  5.28it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  17%|█▋        | 38/222 [00:07<00:37,  4.92it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  18%|█▊        | 39/222 [00:08<00:35,  5.16it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  18%|█▊        | 40/222 [00:08<00:35,  5.10it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  18%|█▊        | 41/222 [00:08<00:34,  5.31it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  19%|█▉        | 42/222 [00:08<00:35,  5.01it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  19%|█▉        | 43/222 [00:08<00:34,  5.24it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  20%|█▉        | 44/222 [00:09<00:35,  4.97it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  20%|██        | 45/222 [00:09<00:34,  5.20it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  21%|██        | 46/222 [00:09<00:34,  5.14it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  21%|██        | 47/222 [00:09<00:32,  5.31it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  22%|██▏       | 48/222 [00:09<00:34,  5.02it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  22%|██▏       | 49/222 [00:10<00:33,  5.24it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  23%|██▎       | 50/222 [00:10<00:34,  4.96it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  23%|██▎       | 51/222 [00:10<00:32,  5.23it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  23%|██▎       | 52/222 [00:10<00:32,  5.16it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  24%|██▍       | 53/222 [00:10<00:31,  5.36it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  24%|██▍       | 54/222 [00:11<00:33,  5.02it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  25%|██▍       | 55/222 [00:11<00:31,  5.24it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  25%|██▌       | 56/222 [00:11<00:33,  4.97it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  26%|██▌       | 57/222 [00:11<00:31,  5.23it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  26%|██▌       | 58/222 [00:11<00:31,  5.15it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  27%|██▋       | 59/222 [00:11<00:30,  5.37it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  27%|██▋       | 60/222 [00:12<00:32,  5.05it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  27%|██▋       | 61/222 [00:12<00:28,  5.73it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  28%|██▊       | 62/222 [00:12<00:30,  5.25it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  28%|██▊       | 63/222 [00:12<00:29,  5.44it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  29%|██▉       | 64/222 [00:12<00:31,  5.06it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  29%|██▉       | 65/222 [00:13<00:29,  5.30it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  30%|██▉       | 66/222 [00:13<00:29,  5.21it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  30%|███       | 67/222 [00:13<00:28,  5.41it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  31%|███       | 68/222 [00:13<00:30,  5.07it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  31%|███       | 69/222 [00:13<00:28,  5.28it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  32%|███▏      | 70/222 [00:14<00:29,  5.17it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  32%|███▏      | 71/222 [00:14<00:29,  5.07it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  32%|███▏      | 72/222 [00:14<00:32,  4.64it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  33%|███▎      | 73/222 [00:14<00:30,  4.81it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  33%|███▎      | 74/222 [00:14<00:28,  5.18it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  34%|███▍      | 75/222 [00:15<00:28,  5.20it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  34%|███▍      | 76/222 [00:15<00:26,  5.51it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  35%|███▍      | 77/222 [00:15<00:26,  5.43it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  35%|███▌      | 78/222 [00:15<00:25,  5.69it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  36%|███▌      | 79/222 [00:15<00:25,  5.57it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  36%|███▌      | 80/222 [00:15<00:24,  5.75it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  36%|███▋      | 81/222 [00:16<00:25,  5.63it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  37%|███▋      | 82/222 [00:16<00:24,  5.80it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  37%|███▋      | 83/222 [00:16<00:24,  5.63it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  38%|███▊      | 84/222 [00:16<00:23,  5.79it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  38%|███▊      | 85/222 [00:16<00:24,  5.66it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  39%|███▊      | 86/222 [00:16<00:23,  5.82it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  39%|███▉      | 87/222 [00:17<00:23,  5.63it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  40%|███▉      | 88/222 [00:17<00:23,  5.78it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  40%|████      | 89/222 [00:17<00:23,  5.63it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  41%|████      | 90/222 [00:17<00:22,  5.78it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  41%|████      | 91/222 [00:17<00:23,  5.63it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  41%|████▏     | 92/222 [00:18<00:22,  5.79it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  42%|████▏     | 93/222 [00:18<00:22,  5.65it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  42%|████▏     | 94/222 [00:18<00:21,  5.86it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  43%|████▎     | 95/222 [00:18<00:22,  5.66it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  43%|████▎     | 96/222 [00:18<00:21,  5.86it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  44%|████▎     | 97/222 [00:18<00:22,  5.67it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  44%|████▍     | 98/222 [00:19<00:21,  5.87it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  45%|████▍     | 99/222 [00:19<00:21,  5.66it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  45%|████▌     | 100/222 [00:19<00:20,  5.85it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  45%|████▌     | 101/222 [00:19<00:21,  5.65it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  46%|████▌     | 102/222 [00:19<00:20,  5.84it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  46%|████▋     | 103/222 [00:19<00:20,  5.70it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  47%|████▋     | 104/222 [00:20<00:20,  5.87it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  47%|████▋     | 105/222 [00:20<00:20,  5.65it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  48%|████▊     | 106/222 [00:20<00:20,  5.80it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  48%|████▊     | 107/222 [00:20<00:20,  5.63it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  49%|████▊     | 108/222 [00:20<00:20,  5.67it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  49%|████▉     | 109/222 [00:21<00:20,  5.54it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  50%|████▉     | 110/222 [00:21<00:19,  5.75it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  50%|█████     | 111/222 [00:21<00:19,  5.61it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  50%|█████     | 112/222 [00:21<00:18,  5.81it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  51%|█████     | 113/222 [00:21<00:19,  5.63it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  51%|█████▏    | 114/222 [00:21<00:18,  5.82it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  52%|█████▏    | 115/222 [00:22<00:19,  5.59it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  52%|█████▏    | 116/222 [00:22<00:18,  5.80it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  53%|█████▎    | 117/222 [00:22<00:18,  5.59it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  53%|█████▎    | 118/222 [00:22<00:17,  5.79it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  54%|█████▎    | 119/222 [00:22<00:18,  5.58it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  54%|█████▍    | 120/222 [00:22<00:17,  5.71it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  55%|█████▍    | 121/222 [00:23<00:18,  5.45it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  55%|█████▍    | 122/222 [00:23<00:17,  5.64it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  55%|█████▌    | 123/222 [00:23<00:17,  5.52it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  56%|█████▌    | 124/222 [00:23<00:17,  5.70it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  56%|█████▋    | 125/222 [00:23<00:17,  5.52it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  57%|█████▋    | 126/222 [00:24<00:16,  5.73it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  57%|█████▋    | 127/222 [00:24<00:16,  5.60it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  58%|█████▊    | 128/222 [00:24<00:16,  5.61it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  58%|█████▊    | 129/222 [00:24<00:16,  5.50it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  59%|█████▊    | 130/222 [00:24<00:16,  5.71it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  59%|█████▉    | 131/222 [00:24<00:16,  5.44it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  59%|█████▉    | 132/222 [00:25<00:16,  5.51it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  60%|█████▉    | 133/222 [00:25<00:16,  5.42it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  60%|██████    | 134/222 [00:25<00:15,  5.62it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  61%|██████    | 135/222 [00:25<00:15,  5.50it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  61%|██████▏   | 136/222 [00:25<00:15,  5.72it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  62%|██████▏   | 137/222 [00:26<00:15,  5.54it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  62%|██████▏   | 138/222 [00:26<00:14,  5.74it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  63%|██████▎   | 139/222 [00:26<00:14,  5.56it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  63%|██████▎   | 140/222 [00:26<00:14,  5.75it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  64%|██████▎   | 141/222 [00:26<00:14,  5.56it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  64%|██████▍   | 142/222 [00:26<00:13,  5.75it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  64%|██████▍   | 143/222 [00:27<00:14,  5.56it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  65%|██████▍   | 144/222 [00:27<00:13,  5.73it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  65%|██████▌   | 145/222 [00:27<00:13,  5.58it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  66%|██████▌   | 146/222 [00:27<00:13,  5.43it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  66%|██████▌   | 147/222 [00:27<00:13,  5.37it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  67%|██████▋   | 148/222 [00:28<00:13,  5.31it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  67%|██████▋   | 149/222 [00:28<00:13,  5.30it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  68%|██████▊   | 150/222 [00:28<00:13,  5.24it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  68%|██████▊   | 151/222 [00:28<00:13,  5.24it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  68%|██████▊   | 152/222 [00:28<00:13,  5.23it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  69%|██████▉   | 153/222 [00:28<00:13,  5.20it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  69%|██████▉   | 154/222 [00:29<00:13,  5.21it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  70%|██████▉   | 155/222 [00:29<00:12,  5.20it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  70%|███████   | 156/222 [00:29<00:12,  5.18it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  71%|███████   | 157/222 [00:29<00:12,  5.14it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  71%|███████   | 158/222 [00:29<00:12,  5.17it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  72%|███████▏  | 159/222 [00:30<00:12,  5.14it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  72%|███████▏  | 160/222 [00:30<00:12,  5.15it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  73%|███████▎  | 161/222 [00:30<00:11,  5.14it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  73%|███████▎  | 162/222 [00:30<00:11,  5.18it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  73%|███████▎  | 163/222 [00:30<00:11,  5.18it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  74%|███████▍  | 164/222 [00:31<00:11,  5.19it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  74%|███████▍  | 165/222 [00:31<00:10,  5.19it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  75%|███████▍  | 166/222 [00:31<00:10,  5.21it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  75%|███████▌  | 167/222 [00:31<00:10,  5.22it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  76%|███████▌  | 168/222 [00:31<00:10,  5.23it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  76%|███████▌  | 169/222 [00:32<00:10,  5.24it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  77%|███████▋  | 170/222 [00:32<00:09,  5.21it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  77%|███████▋  | 171/222 [00:32<00:09,  5.18it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  77%|███████▋  | 172/222 [00:32<00:09,  5.15it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  78%|███████▊  | 173/222 [00:32<00:09,  5.15it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  78%|███████▊  | 174/222 [00:33<00:09,  4.88it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  79%|███████▉  | 175/222 [00:33<00:09,  4.96it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  79%|███████▉  | 176/222 [00:33<00:09,  4.98it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  80%|███████▉  | 177/222 [00:33<00:08,  5.05it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  80%|████████  | 178/222 [00:33<00:08,  5.07it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  81%|████████  | 179/222 [00:34<00:08,  5.11it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  81%|████████  | 180/222 [00:34<00:08,  5.11it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  82%|████████▏ | 181/222 [00:34<00:07,  5.13it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  82%|████████▏ | 182/222 [00:34<00:07,  5.13it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  82%|████████▏ | 183/222 [00:34<00:07,  5.15it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  83%|████████▎ | 184/222 [00:35<00:07,  5.15it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  83%|████████▎ | 185/222 [00:35<00:07,  5.09it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  84%|████████▍ | 186/222 [00:35<00:07,  5.08it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  84%|████████▍ | 187/222 [00:35<00:06,  5.11it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  85%|████████▍ | 188/222 [00:35<00:06,  5.21it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  85%|████████▌ | 189/222 [00:35<00:06,  5.35it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  86%|████████▌ | 190/222 [00:36<00:05,  5.46it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  86%|████████▌ | 191/222 [00:36<00:05,  5.53it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  86%|████████▋ | 192/222 [00:36<00:05,  5.60it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  87%|████████▋ | 193/222 [00:36<00:05,  5.65it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  87%|████████▋ | 194/222 [00:36<00:04,  5.67it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  88%|████████▊ | 195/222 [00:37<00:04,  5.69it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  88%|████████▊ | 196/222 [00:37<00:04,  5.69it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  89%|████████▊ | 197/222 [00:37<00:04,  5.69it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  89%|████████▉ | 198/222 [00:37<00:04,  5.68it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  90%|████████▉ | 199/222 [00:37<00:04,  5.70it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  90%|█████████ | 200/222 [00:37<00:03,  5.62it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  91%|█████████ | 201/222 [00:38<00:03,  5.65it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  91%|█████████ | 202/222 [00:38<00:03,  5.68it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  91%|█████████▏| 203/222 [00:38<00:03,  5.68it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  92%|█████████▏| 204/222 [00:38<00:03,  5.69it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  92%|█████████▏| 205/222 [00:38<00:03,  5.62it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  93%|█████████▎| 206/222 [00:38<00:02,  5.62it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  93%|█████████▎| 207/222 [00:39<00:02,  5.64it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  94%|█████████▎| 208/222 [00:39<00:02,  5.51it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  94%|█████████▍| 209/222 [00:39<00:02,  5.53it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  95%|█████████▍| 210/222 [00:39<00:02,  5.58it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  95%|█████████▌| 211/222 [00:39<00:01,  5.55it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  95%|█████████▌| 212/222 [00:40<00:01,  5.60it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  96%|█████████▌| 213/222 [00:40<00:01,  5.60it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  96%|█████████▋| 214/222 [00:40<00:01,  5.61it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  97%|█████████▋| 215/222 [00:40<00:01,  5.64it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  97%|█████████▋| 216/222 [00:40<00:01,  5.62it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  98%|█████████▊| 217/222 [00:40<00:00,  5.63it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  98%|█████████▊| 218/222 [00:41<00:00,  5.65it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  99%|█████████▊| 219/222 [00:41<00:00,  5.67it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval:  99%|█████████▉| 220/222 [00:41<00:00,  5.68it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval: 100%|█████████▉| 221/222 [00:41<00:00,  5.69it/s]It is strongly recommended to pass the `sampling_rate` argument to this function. Failing to do so can result in silent errors that might be hard to debug.
+zero-shot eval: 100%|██████████| 222/222 [00:41<00:00,  5.69it/s]zero-shot eval: 100%|██████████| 222/222 [00:41<00:00,  5.31it/s]
+{"correct": 71, "total": 222, "accuracy": 0.31982}
+Predictions: output/zero_shot_probe/v1/qwen2audio_predictions.jsonl
+Summary: output/zero_shot_probe/v1/qwen2audio_summary.json
+===== 2026-09-30 21:56:12 key summary =====
+channel:bellhop {'correct': 34, 'total': 111, 'accuracy': 0.306306}
+channel:direct {'correct': 37, 'total': 111, 'accuracy': 0.333333}
+noise:clean {'correct': 27, 'total': 74, 'accuracy': 0.364865}
+noise:real_noise_heavy {'correct': 21, 'total': 74, 'accuracy': 0.283784}
+noise:real_noise_light {'correct': 23, 'total': 74, 'accuracy': 0.310811}
+overall:overall {'correct': 71, 'total': 222, 'accuracy': 0.31982}
+task:fsk_order_choice {'correct': 13, 'total': 24, 'accuracy': 0.541667}
+task:lfm_direction_choice {'correct': 18, 'total': 36, 'accuracy': 0.5}
+task:main_frequency_choice {'correct': 9, 'total': 36, 'accuracy': 0.25}
+task:signal_type_choice {'correct': 31, 'total': 126, 'accuracy': 0.246032}
+===== 2026-09-30 21:56:12 done =====

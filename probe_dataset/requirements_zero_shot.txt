@@ -1,0 +1,9 @@
+﻿numpy
+scipy
+matplotlib
+librosa
+soundfile
+tqdm
+accelerate
+transformers>=4.45.0
+torch

@@ -1,0 +1,167 @@
+{
+  "channel:bellhop": {
+    "correct": 9,
+    "total": 11,
+    "accuracy": 0.818182
+  },
+  "channel:direct": {
+    "correct": 61,
+    "total": 71,
+    "accuracy": 0.859155
+  },
+  "noise:clean": {
+    "correct": 55,
+    "total": 62,
+    "accuracy": 0.887097
+  },
+  "noise:real_noise_heavy": {
+    "correct": 8,
+    "total": 11,
+    "accuracy": 0.727273
+  },
+  "noise:real_noise_light": {
+    "correct": 7,
+    "total": 9,
+    "accuracy": 0.777778
+  },
+  "overall:overall": {
+    "correct": 70,
+    "total": 82,
+    "accuracy": 0.853659
+  },
+  "task:bpsk_symbol_rate_choice": {
+    "correct": 6,
+    "total": 18,
+    "accuracy": 0.333333
+  },
+  "task:fsk_order_choice": {
+    "correct": 20,
+    "total": 20,
+    "accuracy": 1.0
+  },
+  "task:lfm_direction_choice": {
+    "correct": 15,
+    "total": 15,
+    "accuracy": 1.0
+  },
+  "task:main_frequency_choice": {
+    "correct": 12,
+    "total": 12,
+    "accuracy": 1.0
+  },
+  "task:signal_type_choice": {
+    "correct": 17,
+    "total": 17,
+    "accuracy": 1.0
+  },
+  "task_channel:bpsk_symbol_rate_choice|bellhop": {
+    "correct": 1,
+    "total": 3,
+    "accuracy": 0.333333
+  },
+  "task_channel:bpsk_symbol_rate_choice|direct": {
+    "correct": 5,
+    "total": 15,
+    "accuracy": 0.333333
+  },
+  "task_channel:fsk_order_choice|bellhop": {
+    "correct": 3,
+    "total": 3,
+    "accuracy": 1.0
+  },
+  "task_channel:fsk_order_choice|direct": {
+    "correct": 17,
+    "total": 17,
+    "accuracy": 1.0
+  },
+  "task_channel:lfm_direction_choice|direct": {
+    "correct": 15,
+    "total": 15,
+    "accuracy": 1.0
+  },
+  "task_channel:main_frequency_choice|bellhop": {
+    "correct": 2,
+    "total": 2,
+    "accuracy": 1.0
+  },
+  "task_channel:main_frequency_choice|direct": {
+    "correct": 10,
+    "total": 10,
+    "accuracy": 1.0
+  },
+  "task_channel:signal_type_choice|bellhop": {
+    "correct": 3,
+    "total": 3,
+    "accuracy": 1.0
+  },
+  "task_channel:signal_type_choice|direct": {
+    "correct": 14,
+    "total": 14,
+    "accuracy": 1.0
+  },
+  "task_noise:bpsk_symbol_rate_choice|clean": {
+    "correct": 6,
+    "total": 13,
+    "accuracy": 0.461538
+  },
+  "task_noise:bpsk_symbol_rate_choice|real_noise_heavy": {
+    "correct": 0,
+    "total": 3,
+    "accuracy": 0.0
+  },
+  "task_noise:bpsk_symbol_rate_choice|real_noise_light": {
+    "correct": 0,
+    "total": 2,
+    "accuracy": 0.0
+  },
+  "task_noise:fsk_order_choice|clean": {
+    "correct": 14,
+    "total": 14,
+    "accuracy": 1.0
+  },
+  "task_noise:fsk_order_choice|real_noise_heavy": {
+    "correct": 3,
+    "total": 3,
+    "accuracy": 1.0
+  },
+  "task_noise:fsk_order_choice|real_noise_light": {
+    "correct": 3,
+    "total": 3,
+    "accuracy": 1.0
+  },
+  "task_noise:lfm_direction_choice|clean": {
+    "correct": 10,
+    "total": 10,
+    "accuracy": 1.0
+  },
+  "task_noise:lfm_direction_choice|real_noise_heavy": {
+    "correct": 4,
+    "total": 4,
+    "accuracy": 1.0
+  },
+  "task_noise:lfm_direction_choice|real_noise_light": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "task_noise:main_frequency_choice|clean": {
+    "correct": 12,
+    "total": 12,
+    "accuracy": 1.0
+  },
+  "task_noise:signal_type_choice|clean": {
+    "correct": 13,
+    "total": 13,
+    "accuracy": 1.0
+  },
+  "task_noise:signal_type_choice|real_noise_heavy": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "task_noise:signal_type_choice|real_noise_light": {
+    "correct": 3,
+    "total": 3,
+    "accuracy": 1.0
+  }
+}

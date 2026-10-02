@@ -1,0 +1,12 @@
+{
+  "output": "output\\vlm_finetune\\v1",
+  "sample_rate_hz": 16000,
+  "duration_s": 2.0,
+  "seed": 20261001,
+  "samples_per_class": 1000,
+  "qa_per_task": 1000,
+  "real_noise_root": "exclude",
+  "bellhop_exe": "bellhop.exe",
+  "max_freq_hz": 8000.0,
+  "overwrite": false
+}
