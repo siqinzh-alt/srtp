@@ -33,8 +33,13 @@ switch kind
             'start_time_s', start, 'pulse_width_s', width, 'fade_s', fade);
 
     case "LFM"
+<<<<<<< HEAD
         f0 = need(p, 'f_start_hz');
         f1 = need(p, 'f_end_hz');
+=======
+        f0 = need(p, 'f_start');
+        f1 = need(p, 'f_end');
+>>>>>>> a87353eb2b56902e6cd34e74d49cf15ac7e1293f
         assert(all([f0 f1] > 0) && all([f0 f1] < fs/2), ...
             'LFM frequencies must be between 0 and fs/2.');
         k = (f1-f0) / width;
