@@ -6,6 +6,9 @@ addpath(toolDir, fileparts(mfilename('fullpath')), '-begin');
 
 name = 'bpsk_v1';
 outDir = fullfile(root, 'output', 'datasets', name);
+bellhopWorkDir = tempname;
+mkdir(bellhopWorkDir);
+bellhopCleanup = onCleanup(@() rmdir(bellhopWorkDir, 's'));
 noiseTrainDir = fullfile(root, '环境噪声', 'train');
 noiseValDir = fullfile(root, '环境噪声','val');
  
@@ -27,10 +30,10 @@ for p = 1:numel(splits)%训练集和验证集
     className = 'BPSK';
 
     % manifest = fullfile(outDir, [split '_manifest.jsonl']);%全部样本元信息清单
-    qaFile = fullfile(outDir, [split '_qa.jsonl']);%多模态问答标注
+    % qaFile = fullfile(outDir, [split '_qa.jsonl']);%多模态问答标注
 
-    %prepareFile(manifest);
-    prepareFile(qaFile);
+    % prepareFile(manifest);
+    % prepareFile(qaFile);
 
         for k = 1:counts(p)
             sampleNo = sampleNo + 1;
@@ -40,36 +43,36 @@ for p = 1:numel(splits)%训练集和验证集
             
             s.id = id;
             s.class_label = className;
-            s.group_id = id;               % Future QA variants must keep this group ID.
-            s.split = split;
+            % s.group_id = id;             % QA 标注未输出时无需该字段。
+            % s.split = split;
             s.image_px = px;
             s.noise_dir = noiseDir;
             s.noise_split = split;
 
-            channelDir = fullfile(dataDir, 'channel');
-            [clean, channel] = add_bellhop_channel(s, channelDir);%加信道
-            [rx, noiseInfo] = add_noise(clean, s);%加噪声
-            meta = save_output(rx, s, channel, noiseInfo, dataDir, fullfile(name, split));%创建目录并输出文件
+            channelDir = fullfile(bellhopWorkDir, split);
+            [clean, ~] = add_bellhop_channel(s, channelDir);%加信道
+            [rx, ~] = add_noise(clean, s);%加噪声
+            save_output(rx, s, dataDir);%仅输出 WAV 和时频图
             
             % appendJson(manifest, meta);
-            appendJson(qaFile, makeQa(meta));
+            % appendJson(qaFile, makeQa(meta));
             fprintf('%s %s [%d/%d]\n', split, className, k, counts(p));% 打印台进度
         end
 end
 end
 
 
-function prepareFile(path)
-folder = fileparts(path);
-if ~exist(folder, 'dir'), mkdir(folder); end
-id = fopen(path, 'w');%以写入模式打开文件：存在则清空内容，不存在则新建。返回文件标识符 id
-assert(id ~= -1, 'Cannot write %s.', path);
-fclose(id);
-end
+% function prepareFile(path)
+% folder = fileparts(path);
+% if ~exist(folder, 'dir'), mkdir(folder); end
+% id = fopen(path, 'w');%以写入模式打开文件：存在则清空内容，不存在则新建。返回文件标识符 id
+% assert(id ~= -1, 'Cannot write %s.', path);
+% fclose(id);
+% end
 
-function appendJson(path, value)
-id = fopen(path, 'a');
-assert(id ~= -1, 'Cannot append to %s.', path);
-closer = onCleanup(@() fclose(id));
-fprintf(id, '%s\n', jsonencode(value));
-end
+% function appendJson(path, value)
+% id = fopen(path, 'a');
+% assert(id ~= -1, 'Cannot append to %s.', path);
+% closer = onCleanup(@() fclose(id));
+% fprintf(id, '%s\n', jsonencode(value));
+% end
