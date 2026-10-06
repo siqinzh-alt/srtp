@@ -1,0 +1,2 @@
+{"id":"sample_000011","image":"output\\datasets\\bpsk_v1\\val\\spectrogram\\sample_000011.png","conversations":[{"from":"human","value":"请识别该水声通信信号的调制类型。仅输出类别名称。\n<image>"},{"from":"gpt","value":"BPSK"}]}
+{"id":"sample_000012","image":"output\\datasets\\bpsk_v1\\val\\spectrogram\\sample_000012.png","conversations":[{"from":"human","value":"请识别该水声通信信号的调制类型。仅输出类别名称。\n<image>"},{"from":"gpt","value":"BPSK"}]}

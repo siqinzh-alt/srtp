@@ -1,0 +1,10 @@
+{"id":"sample_000001","image":"output\\datasets\\bpsk_v1\\train\\spectrogram\\sample_000001.png","conversations":[{"from":"human","value":"请识别该水声通信信号的调制类型。仅输出类别名称。\n<image>"},{"from":"gpt","value":"BPSK"}]}
+{"id":"sample_000002","image":"output\\datasets\\bpsk_v1\\train\\spectrogram\\sample_000002.png","conversations":[{"from":"human","value":"请识别该水声通信信号的调制类型。仅输出类别名称。\n<image>"},{"from":"gpt","value":"BPSK"}]}
+{"id":"sample_000003","image":"output\\datasets\\bpsk_v1\\train\\spectrogram\\sample_000003.png","conversations":[{"from":"human","value":"请识别该水声通信信号的调制类型。仅输出类别名称。\n<image>"},{"from":"gpt","value":"BPSK"}]}
+{"id":"sample_000004","image":"output\\datasets\\bpsk_v1\\train\\spectrogram\\sample_000004.png","conversations":[{"from":"human","value":"请识别该水声通信信号的调制类型。仅输出类别名称。\n<image>"},{"from":"gpt","value":"BPSK"}]}
+{"id":"sample_000005","image":"output\\datasets\\bpsk_v1\\train\\spectrogram\\sample_000005.png","conversations":[{"from":"human","value":"请识别该水声通信信号的调制类型。仅输出类别名称。\n<image>"},{"from":"gpt","value":"BPSK"}]}
+{"id":"sample_000006","image":"output\\datasets\\bpsk_v1\\train\\spectrogram\\sample_000006.png","conversations":[{"from":"human","value":"请识别该水声通信信号的调制类型。仅输出类别名称。\n<image>"},{"from":"gpt","value":"BPSK"}]}
+{"id":"sample_000007","image":"output\\datasets\\bpsk_v1\\train\\spectrogram\\sample_000007.png","conversations":[{"from":"human","value":"请识别该水声通信信号的调制类型。仅输出类别名称。\n<image>"},{"from":"gpt","value":"BPSK"}]}
+{"id":"sample_000008","image":"output\\datasets\\bpsk_v1\\train\\spectrogram\\sample_000008.png","conversations":[{"from":"human","value":"请识别该水声通信信号的调制类型。仅输出类别名称。\n<image>"},{"from":"gpt","value":"BPSK"}]}
+{"id":"sample_000009","image":"output\\datasets\\bpsk_v1\\train\\spectrogram\\sample_000009.png","conversations":[{"from":"human","value":"请识别该水声通信信号的调制类型。仅输出类别名称。\n<image>"},{"from":"gpt","value":"BPSK"}]}
+{"id":"sample_000010","image":"output\\datasets\\bpsk_v1\\train\\spectrogram\\sample_000010.png","conversations":[{"from":"human","value":"请识别该水声通信信号的调制类型。仅输出类别名称。\n<image>"},{"from":"gpt","value":"BPSK"}]}
