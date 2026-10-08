@@ -114,7 +114,7 @@ def summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Evaluate Qwen2-Audio zero-shot on a probe dataset.")
-    parser.add_argument("--dataset", type=Path, default=Path("output") / "zero_shot_probe" / "v1")
+    parser.add_argument("--dataset", type=Path, default=Path("data") / "zero_shot_probe" / "v1")
     parser.add_argument("--model", default="Qwen/Qwen2-Audio-7B-Instruct")
     parser.add_argument("--output", type=Path, default=None)
     parser.add_argument("--summary", type=Path, default=None)

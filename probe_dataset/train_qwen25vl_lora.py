@@ -269,9 +269,9 @@ def train(cfg: TrainConfig) -> None:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="QLoRA fine-tune Qwen2.5-VL on underwater-acoustic diagnostic images.")
-    parser.add_argument("--dataset", default="output/vlm_finetune/v1")
+    parser.add_argument("--dataset", default="data/vlm_finetune/v3")
     parser.add_argument("--model", default="Qwen/Qwen2.5-VL-7B-Instruct")
-    parser.add_argument("--output-dir", default="output/qwen25vl_lora/v1")
+    parser.add_argument("--output-dir", default="output/qwen25vl_lora/v3")
     parser.add_argument("--train-file", default="train.jsonl")
     parser.add_argument("--val-file", default="val.jsonl")
     parser.add_argument("--epochs", type=int, default=3)

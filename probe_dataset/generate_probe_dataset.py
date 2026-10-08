@@ -652,7 +652,7 @@ def generate_dataset(out_dir: Path, cfg: ProbeConfig) -> tuple[list[dict[str, An
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Generate a strict zero-shot underwater-acoustic probe set.")
-    parser.add_argument("--output", type=Path, default=Path("output") / "zero_shot_probe" / "v1")
+    parser.add_argument("--output", type=Path, default=Path("data") / "zero_shot_probe" / "v1")
     parser.add_argument("--sample-rate", type=int, default=16000)
     parser.add_argument("--duration", type=float, default=2.0)
     parser.add_argument("--seed", type=int, default=20260929)

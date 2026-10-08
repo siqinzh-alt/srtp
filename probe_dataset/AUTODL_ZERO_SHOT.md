@@ -16,7 +16,7 @@
 本地已生成默认 probe set：
 
 ```text
-output/zero_shot_probe/v1/
+data/zero_shot_probe/v1/
 ```
 
 当前数据量很小，适合先做冒烟实验：
@@ -30,7 +30,7 @@ output/zero_shot_probe/v1/
 
 ```text
 probe_dataset/
-output/zero_shot_probe/v1/
+data/zero_shot_probe/v1/
 ```
 
 如果只在 AutoDL 上跑 zero-shot，不需要上传 `bellhop.exe`、`exclude/` 原始噪声或海洋数据；因为音频已经在本地生成完毕。
@@ -90,7 +90,7 @@ PyTorch / Python 3.10 / CUDA 12.x
 本地在仓库根目录打包最小运行包：
 
 ```powershell
-tar -czf zero_shot_probe_autodl.tar.gz probe_dataset output/zero_shot_probe/v1
+tar -czf zero_shot_probe_autodl.tar.gz probe_dataset data/zero_shot_probe/v1
 ```
 
 实例开机后，在 AutoDL 控制台复制 SSH 登录命令，格式大概是：
@@ -116,7 +116,7 @@ cd /root/autodl-tmp/srtp
 如果后续数据集变大且小文件很多，可以用 tar 流直传：
 
 ```powershell
-tar cf - probe_dataset output/zero_shot_probe/v1 | ssh -p <port> root@<region-host> "mkdir -p /root/autodl-tmp/srtp && cd /root/autodl-tmp/srtp && tar xf -"
+tar cf - probe_dataset data/zero_shot_probe/v1 | ssh -p <port> root@<region-host> "mkdir -p /root/autodl-tmp/srtp && cd /root/autodl-tmp/srtp && tar xf -"
 ```
 
 ### 方案 B：Git + 单独上传数据
@@ -132,7 +132,7 @@ cd srtp
 然后只上传：
 
 ```text
-output/zero_shot_probe/v1/
+data/zero_shot_probe/v1/
 ```
 
 ## 环境安装
@@ -164,7 +164,7 @@ export HF_ENDPOINT=https://hf-mirror.com
 
 ```bash
 python probe_dataset/evaluate_qwen2audio_zero_shot.py \
-  --dataset output/zero_shot_probe/v1 \
+  --dataset data/zero_shot_probe/v1 \
   --model Qwen/Qwen2-Audio-7B-Instruct \
   --limit 5 \
   --batch-size 1 \
@@ -175,7 +175,7 @@ python probe_dataset/evaluate_qwen2audio_zero_shot.py \
 
 ```bash
 python probe_dataset/evaluate_qwen2audio_zero_shot.py \
-  --dataset output/zero_shot_probe/v1 \
+  --dataset data/zero_shot_probe/v1 \
   --model Qwen/Qwen2-Audio-7B-Instruct \
   --limit 5 \
   --batch-size 1 \
@@ -189,7 +189,7 @@ python probe_dataset/evaluate_qwen2audio_zero_shot.py \
 
 ```bash
 python probe_dataset/evaluate_qwen2audio_zero_shot.py \
-  --dataset output/zero_shot_probe/v1 \
+  --dataset data/zero_shot_probe/v1 \
   --model Qwen/Qwen2-Audio-7B-Instruct \
   --batch-size 1 \
   --dtype float16
@@ -199,7 +199,7 @@ python probe_dataset/evaluate_qwen2audio_zero_shot.py \
 
 ```bash
 python probe_dataset/evaluate_qwen2audio_zero_shot.py \
-  --dataset output/zero_shot_probe/v1 \
+  --dataset data/zero_shot_probe/v1 \
   --model Qwen/Qwen2-Audio-7B-Instruct \
   --batch-size 1 \
   --dtype bfloat16
@@ -210,8 +210,8 @@ python probe_dataset/evaluate_qwen2audio_zero_shot.py \
 默认输出在数据集目录下：
 
 ```text
-output/zero_shot_probe/v1/qwen2audio_predictions.jsonl
-output/zero_shot_probe/v1/qwen2audio_summary.json
+data/zero_shot_probe/v1/qwen2audio_predictions.jsonl
+data/zero_shot_probe/v1/qwen2audio_summary.json
 ```
 
 `qwen2audio_predictions.jsonl` 每行包含：
@@ -241,7 +241,7 @@ AutoDL 实例 GPU 型号：
 Python/PyTorch/CUDA 版本：
 transformers 版本：
 模型名：Qwen/Qwen2-Audio-7B-Instruct
-数据集路径：output/zero_shot_probe/v1
+数据集路径：data/zero_shot_probe/v1
 命令行参数：
 运行耗时：
 是否出现 OOM：

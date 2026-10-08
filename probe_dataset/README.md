@@ -51,6 +51,12 @@ Python 脚本按这些模板写 Bellhop `.env` 文件，包含：
 
 后续如果补齐 WOA23 温度数据，可以把环境模板替换为 WOA 温盐剖面生成的真实海域声速剖面。
 
+## 目录约定
+
+- `data/`：正式数据集和外部数据缓存，例如 `data/vlm_finetune/v3`、`data/sources/watkins`。
+- `output/`：模型训练、评测和推理产物，例如 `output/qwen25vl_lora/v3`。
+- `.tmp/`：烟测、临时脚本和可随时删除的中间文件。
+
 ## 生成命令
 
 生成默认完整分层 probe set：
@@ -62,25 +68,25 @@ python .\probe_dataset\generate_probe_dataset.py
 默认输出到：
 
 ```text
-output/zero_shot_probe/v1/
+data/zero_shot_probe/v1/
 ```
 
 生成一批更小的快速检查版本（少量 CW/LFM/FSK，1 条 BPSK）：
 
 ```powershell
-python .\probe_dataset\generate_probe_dataset.py --output output\zero_shot_probe\tiny --cw-repeats 1 --lfm-repeats 1 --fsk-repeats 1 --bpsk-count 1
+python .\probe_dataset\generate_probe_dataset.py --output data\zero_shot_probe\tiny --cw-repeats 1 --lfm-repeats 1 --fsk-repeats 1 --bpsk-count 1
 ``` 
 
 只生成最简单的无噪声、无 Bellhop 版本：
 
 ```powershell
-python .\probe_dataset\generate_probe_dataset.py --output output\zero_shot_probe\clean_direct --noise-levels clean --channel-conditions direct
+python .\probe_dataset\generate_probe_dataset.py --output data\zero_shot_probe\clean_direct --noise-levels clean --channel-conditions direct
 ```
 
 只生成 Bellhop + 三档噪声版本：
 
 ```powershell
-python .\probe_dataset\generate_probe_dataset.py --output output\zero_shot_probe\bellhop_only --channel-conditions bellhop
+python .\probe_dataset\generate_probe_dataset.py --output data\zero_shot_probe\bellhop_only --channel-conditions bellhop
 ```
 
 ## VLM 微调数据集
@@ -88,22 +94,46 @@ python .\probe_dataset\generate_probe_dataset.py --output output\zero_shot_probe
 正式微调数据集使用独立入口，避免和 zero-shot probe 混用：
 
 ```powershell
-python .\probe_dataset\generate_vlm_finetune_dataset.py --output output\vlm_finetune\v1
+python .\probe_dataset\generate_vlm_finetune_dataset.py --output data\vlm_finetune\v1
 ```
 
 默认配置会生成：
 
-- `CW/LFM/FSK/BPSK` 四类唯一样本均衡，每类 1000 张 `diagnostic_triplet` 图。
-- 约 5000 条单问 QA：类型识别、CW 主频、LFM 方向、FSK 阶数、BPSK 码元率。
-- 题型均衡、题内答案均衡；主频仍为 `250/500/1000/2000/4000/6000 Hz` 六选一，不单独设置低频题。
+- `CW/LFM/FSK/BPSK` 四类唯一样本均衡，每类 1000 张统一三联图，直接存放在 `images/` 下。
+- 约 5000 条 QA，按固定题型概率分布生成，而不是简单五类选择题均分。
+- 单题/多题比例约为 `65%/35%`；单题内部选择题/开放短答约为 `35%/65%`。
+- 折算总体约为 `23%` 选择题、`42%` 单题开放短答、`35%` 多字段 JSON 开放题。
+- 题目字段覆盖 `signal_type`、`main_frequency_hz`、`lfm_direction`、`fsk_order`、`bpsk_symbol_rate`、`noise_level`、`channel_condition`。
+- 多题答案固定为 JSON；单题开放题只输出短答案，不要求解释。
 - 条件比例约为 `70% clean/direct`、`10% real_noise_light/direct`、`10% real_noise_heavy/direct`、`10% clean/bellhop`。
 - `train/val/test = 80/10/10`，同一图片和同一基础信号不会跨 split。
+- 同一图片最多生成 3 条 QA，避免少数图片过度重复。
 
 快速烟测可以使用更小规模：
 
 ```powershell
 python .\probe_dataset\generate_vlm_finetune_dataset.py --output .tmp\vlm_finetune_smoke --samples-per-class 24 --qa-per-task 24 --overwrite
 ```
+
+如果需要直接指定 QA 总数，可以使用：
+
+```powershell
+python .\probe_dataset\generate_vlm_finetune_dataset.py --output data\vlm_finetune\v2 --target-qa-items 5000
+```
+
+如果要在合成数据集基础上再加入 1000 条公开动物/生物声学信号样本，可以生成 `v3`：
+
+```powershell
+python .\probe_dataset\generate_vlm_finetune_with_animals.py --base-dataset data\vlm_finetune\v1 --output data\vlm_finetune\v3 --animal-samples 1000 --overwrite
+```
+
+`v3` 会保留基线的 4000 条合成 `CW/LFM/FSK/BPSK` 样本，并加入 Watkins Marine Mammal Sound Database 的动物声学样本：
+
+- 动物样本下载 Watkins 原始 FLAC 音频，转为统一的 16 kHz/2 s WAV，再使用与合成样本相同的三联图格式，图片也直接存放在 `images/` 下。
+- 动物题型覆盖 `bio_species_or_group`、`bio_species_code`、`bio_call_description`，仍保持单题/多题和选择/开放题的概率分布。
+- 动物样本按物种尽量均衡抽样，默认选 Watkins 元数据中记录数最多的 20 个物种，每张图最多复用 3 条 QA。
+- `train/val/test = 80/10/10`，同一 Watkins 录音号不会跨 split。
+- 外部 FLAC 音频会缓存到 `data\sources\watkins\audio_flac`，便于中断后继续生成。
 
 微调集输出结构：
 

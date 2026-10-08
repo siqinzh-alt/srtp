@@ -47,6 +47,46 @@ def score_choice(response: str, expected: str, choices: list[str]) -> bool:
     return normalized_expected in normalized_response
 
 
+def extract_json_object(text: str) -> dict[str, Any] | None:
+    text = text.strip()
+    candidates = [text]
+    start = text.find("{")
+    end = text.rfind("}")
+    if start >= 0 and end > start:
+        candidates.append(text[start : end + 1])
+    for candidate in candidates:
+        try:
+            parsed = json.loads(candidate)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(parsed, dict):
+            return parsed
+    return None
+
+
+def score_json_fields(response: str, expected: str, fields: list[str]) -> bool:
+    parsed_response = extract_json_object(response)
+    parsed_expected = extract_json_object(expected)
+    if parsed_response is None or parsed_expected is None:
+        return False
+    for field in fields:
+        if field not in parsed_response or field not in parsed_expected:
+            return False
+        if normalize_text(str(parsed_response[field])) != normalize_text(str(parsed_expected[field])):
+            return False
+    return True
+
+
+def score_response(item: dict[str, Any], response: str) -> bool:
+    scoring_type = item.get("scoring", {}).get("type")
+    expected = item["expected_answer"]
+    if scoring_type == "json_exact_fields":
+        return score_json_fields(response, expected, item.get("fields", []))
+    if scoring_type == "open_short_exact":
+        return normalize_text(response) == normalize_text(expected) or normalize_text(expected) in normalize_text(response)
+    return score_choice(response, expected, item.get("choices", []))
+
+
 def load_image(path: Path) -> Image.Image:
     return Image.open(path).convert("RGB")
 
@@ -63,6 +103,11 @@ def row_to_eval_item(row: dict[str, Any]) -> dict[str, Any]:
         "prompt": prompt,
         "expected_answer": expected,
         "choices": metadata.get("choices", []),
+        "fields": metadata.get("fields", []),
+        "field_count": metadata.get("field_count", 1),
+        "answer_format": metadata.get("answer_format", "choice"),
+        "field_signature": metadata.get("field_signature"),
+        "scoring": metadata.get("scoring", {"type": "choice_exact"}),
         "task": metadata.get("task", "unknown"),
         "condition": metadata.get("condition", {}),
         "label": metadata.get("label", {}),
@@ -79,6 +124,9 @@ def summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
             "task": row.get("task", "unknown"),
             "noise": condition.get("noise_level", "unknown"),
             "channel": condition.get("channel_condition", "unknown"),
+            "answer_format": row.get("answer_format", "unknown"),
+            "field_count": row.get("field_count", "unknown"),
+            "fields": "+".join(row.get("fields", [])) or "unknown",
             "task_noise": f"{row.get('task', 'unknown')}|{condition.get('noise_level', 'unknown')}",
             "task_channel": f"{row.get('task', 'unknown')}|{condition.get('channel_condition', 'unknown')}",
         }
@@ -129,15 +177,21 @@ def run_batch(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Evaluate a Qwen2.5-VL LoRA adapter on the VLM fine-tuning QA set.")
-    parser.add_argument("--dataset", type=Path, default=Path("output") / "vlm_finetune" / "v1")
+    parser = argparse.ArgumentParser(description="Evaluate Qwen2.5-VL on the VLM fine-tuning QA set, with or without a LoRA adapter.")
+    parser.add_argument("--dataset", type=Path, default=Path("data") / "vlm_finetune" / "v1")
     parser.add_argument("--data-file", default="test.jsonl")
     parser.add_argument("--model", default="Qwen/Qwen2.5-VL-7B-Instruct")
-    parser.add_argument("--adapter", type=Path, default=Path("output") / "qwen25vl_lora" / "v1" / "final_adapter")
+    parser.add_argument(
+        "--adapter",
+        type=Path,
+        default=Path("output") / "qwen25vl_lora" / "v1" / "final_adapter",
+        help="LoRA adapter path. Use --no-adapter for zero-shot base-model evaluation.",
+    )
+    parser.add_argument("--no-adapter", action="store_true", help="Evaluate the base model without loading a LoRA adapter.")
     parser.add_argument("--output", type=Path, default=None)
     parser.add_argument("--summary", type=Path, default=None)
     parser.add_argument("--batch-size", type=int, default=1)
-    parser.add_argument("--max-new-tokens", type=int, default=16)
+    parser.add_argument("--max-new-tokens", type=int, default=64)
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--dtype", choices=["auto", "float16", "bfloat16", "float32"], default="bfloat16")
     parser.add_argument("--load-4bit", action="store_true")
@@ -146,8 +200,9 @@ def main() -> None:
     args = parser.parse_args()
 
     dataset_root = args.dataset
-    output_path = args.output or args.adapter.parent / f"{Path(args.data_file).stem}_predictions.jsonl"
-    summary_path = args.summary or args.adapter.parent / f"{Path(args.data_file).stem}_summary.json"
+    run_dir = args.adapter.parent if not args.no_adapter else Path("output") / "qwen25vl_zero_shot" / dataset_root.name
+    output_path = args.output or run_dir / f"{Path(args.data_file).stem}_predictions.jsonl"
+    summary_path = args.summary or run_dir / f"{Path(args.data_file).stem}_summary.json"
     rows = read_jsonl(dataset_root / args.data_file)
     items = [row_to_eval_item(row) for row in rows]
     if args.limit is not None:
@@ -168,8 +223,9 @@ def main() -> None:
             bnb_4bit_use_double_quant=True,
         )
 
+    processor_source = args.model if args.no_adapter else (args.adapter if args.adapter.exists() else args.model)
     processor = AutoProcessor.from_pretrained(
-        args.adapter if args.adapter.exists() else args.model,
+        processor_source,
         trust_remote_code=True,
         min_pixels=args.min_pixels,
         max_pixels=args.max_pixels,
@@ -181,14 +237,17 @@ def main() -> None:
         device_map="auto",
         trust_remote_code=True,
     )
-    model = PeftModel.from_pretrained(model, args.adapter).eval()
+    if not args.no_adapter:
+        model = PeftModel.from_pretrained(model, args.adapter)
+    model = model.eval()
 
     predictions: list[dict[str, Any]] = []
-    for start in tqdm(range(0, len(items), args.batch_size), desc="qwen2.5-vl lora eval"):
+    desc = "qwen2.5-vl zero-shot eval" if args.no_adapter else "qwen2.5-vl lora eval"
+    for start in tqdm(range(0, len(items), args.batch_size), desc=desc):
         batch = items[start : start + args.batch_size]
         responses = run_batch(batch, dataset_root, processor, model, args.max_new_tokens)
         for item, response in zip(batch, responses):
-            correct = score_choice(response, item["expected_answer"], item.get("choices", []))
+            correct = score_response(item, response)
             predictions.append({**item, "response": response, "correct": correct})
         write_jsonl(output_path, predictions)
         summary_path.write_text(json.dumps(summarize(predictions), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

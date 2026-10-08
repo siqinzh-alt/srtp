@@ -1,0 +1,32 @@
+{
+  "base_dataset": "data\\vlm_finetune\\v1",
+  "output": "data\\vlm_finetune\\v3",
+  "source_cache": "data\\sources\\watkins",
+  "animal_samples": 1000,
+  "animal_qa_items": null,
+  "seed": 20261006,
+  "sample_rate_hz": 16000,
+  "duration_s": 2.0,
+  "max_freq_hz": 8000.0,
+  "species_count": 20,
+  "min_cut_size_s": 0.5,
+  "request_timeout_s": 20,
+  "download_retries": 2,
+  "download_workers": 16,
+  "overwrite": true,
+  "copy_mode": "hardlink",
+  "base_filter": "none; base v1 contains only synthetic CW/LFM/FSK/BPSK samples",
+  "image_path_convention": "images/{sample_id}.png",
+  "sample_id_convention": "vlmft_000001..vlmft_005000; type is stored only in labels",
+  "animal_field_weights": {
+    "bio_species_or_group": 0.77,
+    "bio_species_code": 0.23
+  },
+  "removed_qa_fields": [
+    "bio_call_description"
+  ],
+  "qa_total_after_field_removal": 5937,
+  "qa_removed_by_field": {
+    "bio_call_description": 313
+  }
+}

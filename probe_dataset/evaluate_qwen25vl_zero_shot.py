@@ -125,7 +125,7 @@ def run_batch(batch: list[dict[str, Any]], dataset_root: Path, processor: AutoPr
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Evaluate Qwen2.5-VL zero-shot on generated probe images.")
-    parser.add_argument("--dataset", type=Path, default=Path("output") / "zero_shot_probe" / "v1")
+    parser.add_argument("--dataset", type=Path, default=Path("data") / "zero_shot_probe" / "v1")
     parser.add_argument("--model", default="Qwen/Qwen2.5-VL-7B-Instruct")
     parser.add_argument("--image-manifest", default="vlm_image_manifest.jsonl")
     parser.add_argument("--image-view", choices=["composite", "spectrogram_only", "diagnostic_triplet"], default="composite")

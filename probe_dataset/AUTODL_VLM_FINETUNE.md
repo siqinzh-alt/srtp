@@ -3,17 +3,17 @@
 ## 目标
 
 - 模型：`Qwen/Qwen2.5-VL-7B-Instruct`
-- 数据：`output/vlm_finetune/v1`
+- 数据：`data/vlm_finetune/v3`
 - 训练方式：单卡 32GB 上优先跑 4bit QLoRA。
 - 任务：同一张诊断图可对应不同单问单答，但 train/val/test 图像不复用。
 
 ## 本地数据状态
 
-- 训练集：`output/vlm_finetune/v1/train.jsonl`
-- 验证集：`output/vlm_finetune/v1/val.jsonl`
-- 测试集：`output/vlm_finetune/v1/test.jsonl`
-- 数据报告：`output/vlm_finetune/v1/dataset_report.md`
-- 图像目录：`output/vlm_finetune/v1/images`
+- 训练集：`data/vlm_finetune/v3/train.jsonl`
+- 验证集：`data/vlm_finetune/v3/val.jsonl`
+- 测试集：`data/vlm_finetune/v3/test.jsonl`
+- 数据报告：`data/vlm_finetune/v3/dataset_report.md`
+- 图像目录：`data/vlm_finetune/v3/images`
 
 当前报告显示：4000 张图、4996 条 QA，信号类型与问题类型基本均衡。
 
@@ -22,7 +22,7 @@
 拿到当前实例 SSH 端口后，在本地仓库根目录执行：
 
 ```bash
-tar cf - probe_dataset output/vlm_finetune/v1 | ssh -p <port> root@<region-host> "mkdir -p /root/autodl-tmp/srtp && cd /root/autodl-tmp/srtp && tar xf -"
+tar cf - probe_dataset data/vlm_finetune/v3 | ssh -p <port> root@<region-host> "mkdir -p /root/autodl-tmp/srtp && cd /root/autodl-tmp/srtp && tar xf -"
 ```
 
 如果 PowerShell 里没有 `tar`/`ssh` 兼容问题，也可以直接用同一条命令。`<port>` 和 `<region-host>` 以 AutoDL 控制台当前实例为准。
@@ -36,10 +36,10 @@ bash probe_dataset/run_autodl_qwen25vl_lora.sh
 
 默认输出：
 
-- LoRA adapter：`output/qwen25vl_lora/v1/final_adapter`
-- checkpoint：`output/qwen25vl_lora/v1/checkpoint-*`
-- 训练日志：`output/qwen25vl_lora/v1/train_log.jsonl`
-- 配置快照：`output/qwen25vl_lora/v1/train_config.json`
+- LoRA adapter：`output/qwen25vl_lora/v3/final_adapter`
+- checkpoint：`output/qwen25vl_lora/v3/checkpoint-*`
+- 训练日志：`output/qwen25vl_lora/v3/train_log.jsonl`
+- 配置快照：`output/qwen25vl_lora/v3/train_config.json`
 
 ## 烟测命令
 
@@ -50,7 +50,7 @@ cd /root/autodl-tmp/srtp
 python -m pip install -r probe_dataset/requirements_finetune.txt
 python -m py_compile probe_dataset/train_qwen25vl_lora.py
 python probe_dataset/train_qwen25vl_lora.py \
-  --dataset output/vlm_finetune/v1 \
+  --dataset data/vlm_finetune/v3 \
   --output-dir output/qwen25vl_lora/smoke \
   --max-train-samples 8 \
   --max-val-samples 4 \

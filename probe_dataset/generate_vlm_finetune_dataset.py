@@ -15,7 +15,7 @@ import shutil
 from collections import Counter, defaultdict
 from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 import numpy as np
 
@@ -54,16 +54,30 @@ CONDITION_WEIGHTS = {
     ("real_noise_heavy", "direct"): 0.1,
     ("clean", "bellhop"): 0.1,
 }
+FIELD_COUNT_WEIGHTS = {1: 0.65, 2: 0.25, 3: 0.10}
+SINGLE_FORMAT_WEIGHTS = {"choice": 0.35, "open_short": 0.65}
+FIELD_WEIGHTS = {
+    "signal_type": 0.22,
+    "main_frequency_hz": 0.20,
+    "lfm_direction": 0.093,
+    "fsk_order": 0.093,
+    "bpsk_symbol_rate": 0.094,
+    "noise_level": 0.12,
+    "channel_condition": 0.08,
+    "bio_species_or_group": 0.10,
+}
+MAX_QA_PER_IMAGE = 3
 
 
 @dataclass(frozen=True)
 class FinetuneConfig:
-    output: Path = Path("output") / "vlm_finetune" / "v1"
+    output: Path = Path("data") / "vlm_finetune" / "v1"
     sample_rate_hz: int = 16000
     duration_s: float = 2.0
     seed: int = 20261001
     samples_per_class: int = 1000
     qa_per_task: int = 1000
+    target_qa_items: int | None = None
     real_noise_root: str = "exclude"
     bellhop_exe: str = "bellhop.exe"
     max_freq_hz: float = 8000.0
@@ -266,7 +280,7 @@ def generate_samples(out_dir: Path, cfg: FinetuneConfig) -> list[dict[str, Any]]
             condition.update({"noise_added": True, **noise_meta})
 
         audio_rel = Path("audio") / f"{sample_id}.wav"
-        image_rel = Path("images") / "diagnostic_triplet" / f"{sample_id}.png"
+        image_rel = Path("images") / f"{sample_id}.png"
         metadata_rel = Path("metadata") / f"{sample_id}.json"
         save_wav(out_dir / audio_rel, probe_cfg.sample_rate_hz, y)
         save_diagnostic_triplet(out_dir / audio_rel, out_dir / image_rel, max_freq=cfg.max_freq_hz)
@@ -293,112 +307,315 @@ def generate_samples(out_dir: Path, cfg: FinetuneConfig) -> list[dict[str, Any]]
     return samples
 
 
-def task_prompt(task: str, choices: list[str]) -> str:
-    prefix = "图中从上到下分别是幅频图、瞬时相位差图、线性频率时频图。"
-    if task == "signal_type_choice":
-        return prefix + "这段水声信号属于 CW、LFM、FSK、BPSK 中的哪一种？只回答一个选项。"
-    if task == "main_frequency_choice":
-        return prefix + "这段 CW 单频信号的主频最接近哪个：" + "、".join(choices) + "？只回答一个选项。"
-    if task == "lfm_direction_choice":
-        return prefix + "这段 LFM 信号是升频还是降频？只回答：升频 或 降频。"
-    if task == "fsk_order_choice":
-        return prefix + "这段 FSK 信号更像两频跳变还是四频跳变？只回答：2FSK 或 4FSK。"
-    if task == "bpsk_symbol_rate_choice":
-        return prefix + "这段 BPSK 信号的相位跳变码元率最接近哪个：" + "、".join(choices) + "？只回答一个选项。"
-    raise ValueError(f"Unsupported task: {task}")
+def diagnostic_prefix() -> str:
+    return "图中从上到下分别是幅频图、瞬时相位差图、线性频率时频图。"
 
 
-def task_definitions() -> dict[str, dict[str, Any]]:
+def answer_signal_type(sample: dict[str, Any]) -> str:
+    return sample["label"]["signal_type"]
+
+
+def answer_main_frequency(sample: dict[str, Any]) -> str:
+    return f"{sample['label']['main_frequency_hz']} Hz"
+
+
+def answer_lfm_direction(sample: dict[str, Any]) -> str:
+    return sample["label"]["direction"]
+
+
+def answer_fsk_order(sample: dict[str, Any]) -> str:
+    return f"{sample['label']['fsk_order']}FSK"
+
+
+def answer_bpsk_symbol_rate(sample: dict[str, Any]) -> str:
+    return f"{sample['label']['symbol_rate']} symbol/s"
+
+
+def answer_noise_level(sample: dict[str, Any]) -> str:
+    return sample["condition"]["noise_level"]
+
+
+def answer_channel_condition(sample: dict[str, Any]) -> str:
+    return sample["condition"]["channel_condition"]
+
+
+def field_definitions() -> dict[str, dict[str, Any]]:
     return {
-        "signal_type_choice": {
-            "answers": SIGNAL_TYPE_CHOICES,
-            "answer_fn": lambda sample: sample["label"]["signal_type"],
+        "signal_type": {
+            "choice_task": "signal_type_choice",
+            "open_task": "signal_type_open_short",
+            "choices": SIGNAL_TYPE_CHOICES,
+            "answer_fn": answer_signal_type,
             "candidate_fn": lambda sample: True,
+            "choice_prompt": lambda choices: diagnostic_prefix() + "这段水声信号属于 CW、LFM、FSK、BPSK 中的哪一种？只回答一个选项。",
+            "open_prompt": lambda: diagnostic_prefix() + "这段水声信号属于哪一种调制/信号类型？只回答短答案。",
         },
-        "main_frequency_choice": {
-            "answers": [f"{value} Hz" for value in FREQUENCY_CHOICES_HZ],
-            "answer_fn": lambda sample: f"{sample['label']['main_frequency_hz']} Hz",
-            "candidate_fn": lambda sample: sample["label"]["signal_type"] == "CW",
+        "main_frequency_hz": {
+            "choice_task": "main_frequency_choice",
+            "open_task": "main_frequency_open_short",
+            "choices": [f"{value} Hz" for value in FREQUENCY_CHOICES_HZ],
+            "answer_fn": answer_main_frequency,
+            "candidate_fn": lambda sample: sample["label"].get("signal_type") == "CW",
+            "choice_prompt": lambda choices: diagnostic_prefix() + "这段 CW 单频信号的主频最接近哪个：" + "、".join(choices) + "？只回答一个选项。",
+            "open_prompt": lambda: diagnostic_prefix() + "这段 CW 单频信号的主频是多少？只回答短答案，格式如 1000 Hz。",
         },
-        "lfm_direction_choice": {
-            "answers": ["升频", "降频"],
-            "answer_fn": lambda sample: sample["label"]["direction"],
-            "candidate_fn": lambda sample: sample["label"]["signal_type"] == "LFM",
+        "lfm_direction": {
+            "choice_task": "lfm_direction_choice",
+            "open_task": "lfm_direction_open_short",
+            "choices": ["升频", "降频"],
+            "answer_fn": answer_lfm_direction,
+            "candidate_fn": lambda sample: sample["label"].get("signal_type") == "LFM",
+            "choice_prompt": lambda choices: diagnostic_prefix() + "这段 LFM 信号是升频还是降频？只回答：升频 或 降频。",
+            "open_prompt": lambda: diagnostic_prefix() + "这段 LFM 信号的扫频方向是什么？只回答短答案。",
         },
-        "fsk_order_choice": {
-            "answers": ["2FSK", "4FSK"],
-            "answer_fn": lambda sample: f"{sample['label']['fsk_order']}FSK",
-            "candidate_fn": lambda sample: sample["label"]["signal_type"] == "FSK",
+        "fsk_order": {
+            "choice_task": "fsk_order_choice",
+            "open_task": "fsk_order_open_short",
+            "choices": ["2FSK", "4FSK"],
+            "answer_fn": answer_fsk_order,
+            "candidate_fn": lambda sample: sample["label"].get("signal_type") == "FSK",
+            "choice_prompt": lambda choices: diagnostic_prefix() + "这段 FSK 信号更像两频跳变还是四频跳变？只回答：2FSK 或 4FSK。",
+            "open_prompt": lambda: diagnostic_prefix() + "这段 FSK 信号的频移键控阶数是什么？只回答短答案。",
         },
-        "bpsk_symbol_rate_choice": {
-            "answers": [f"{value} symbol/s" for value in BPSK_SYMBOL_RATES],
-            "answer_fn": lambda sample: f"{sample['label']['symbol_rate']} symbol/s",
-            "candidate_fn": lambda sample: sample["label"]["signal_type"] == "BPSK",
+        "bpsk_symbol_rate": {
+            "choice_task": "bpsk_symbol_rate_choice",
+            "open_task": "bpsk_symbol_rate_open_short",
+            "choices": [f"{value} symbol/s" for value in BPSK_SYMBOL_RATES],
+            "answer_fn": answer_bpsk_symbol_rate,
+            "candidate_fn": lambda sample: sample["label"].get("signal_type") == "BPSK",
+            "choice_prompt": lambda choices: diagnostic_prefix() + "这段 BPSK 信号的相位跳变码元率最接近哪个：" + "、".join(choices) + "？只回答一个选项。",
+            "open_prompt": lambda: diagnostic_prefix() + "这段 BPSK 信号的码元率是多少？只回答短答案，格式如 25 symbol/s。",
+        },
+        "noise_level": {
+            "choice_task": "noise_level_choice",
+            "open_task": "noise_level_open_short",
+            "choices": list(NOISE_LEVELS),
+            "answer_fn": answer_noise_level,
+            "candidate_fn": lambda sample: True,
+            "choice_prompt": lambda choices: diagnostic_prefix() + "这段样本的噪声等级最接近哪个：" + "、".join(choices) + "？只回答一个选项。",
+            "open_prompt": lambda: diagnostic_prefix() + "这段样本的噪声等级是什么？只回答短答案。",
+        },
+        "channel_condition": {
+            "choice_task": "channel_condition_choice",
+            "open_task": "channel_condition_open_short",
+            "choices": ["direct", "bellhop"],
+            "answer_fn": answer_channel_condition,
+            "candidate_fn": lambda sample: True,
+            "choice_prompt": lambda choices: diagnostic_prefix() + "这段样本更像直达信道还是 Bellhop 多径信道：" + "、".join(choices) + "？只回答一个选项。",
+            "open_prompt": lambda: diagnostic_prefix() + "这段样本的信道条件是什么？只回答短答案。",
         },
     }
 
 
-def select_by_answer_and_split(
+def task_definitions() -> dict[str, dict[str, Any]]:
+    definitions: dict[str, dict[str, Any]] = {}
+    for field, spec in field_definitions().items():
+        definitions[spec["choice_task"]] = {**spec, "field": field, "answer_format": "choice"}
+        definitions[spec["open_task"]] = {**spec, "field": field, "answer_format": "open_short"}
+    definitions["multi_field_open_json"] = {"field": "multi", "answer_format": "open_json"}
+    return definitions
+
+
+def available_fields(sample: dict[str, Any]) -> list[str]:
+    return [field for field, spec in field_definitions().items() if spec["candidate_fn"](sample)]
+
+
+def normalized_field_weights(fields: list[str]) -> dict[str, float]:
+    weights = {field: FIELD_WEIGHTS[field] for field in fields if field in FIELD_WEIGHTS and field != "bio_species_or_group"}
+    total = sum(weights.values())
+    if total <= 0:
+        return {field: 1.0 / len(fields) for field in fields}
+    return {field: weight / total for field, weight in weights.items()}
+
+
+def choose_fields(fields: list[str], count: int, rng: np.random.Generator) -> list[str]:
+    weights = normalized_field_weights(fields)
+    ordered_fields = list(weights)
+    probabilities = np.array([weights[field] for field in ordered_fields], dtype=float)
+    probabilities = probabilities / probabilities.sum()
+    selected = rng.choice(ordered_fields, size=count, replace=False, p=probabilities)
+    return [str(field) for field in selected]
+
+
+def target_qa_count(cfg: FinetuneConfig) -> int:
+    if cfg.target_qa_items is not None:
+        return cfg.target_qa_items
+    return cfg.qa_per_task * 5
+
+
+def make_choice_prompt(field: str) -> str:
+    spec = field_definitions()[field]
+    return spec["choice_prompt"](list(spec["choices"]))
+
+
+def make_open_prompt(field: str) -> str:
+    return field_definitions()[field]["open_prompt"]()
+
+
+def make_multi_prompt(fields: list[str]) -> str:
+    return (
+        diagnostic_prefix()
+        + "请同时判断以下字段："
+        + "、".join(fields)
+        + "。只输出 JSON 对象，字段名必须与题目中给出的字段名一致，不要解释。"
+    )
+
+
+def field_answer(sample: dict[str, Any], field: str) -> str:
+    return str(field_definitions()[field]["answer_fn"](sample))
+
+
+def field_answers_json(sample: dict[str, Any], fields: list[str]) -> str:
+    return json.dumps({field: field_answer(sample, field) for field in fields}, ensure_ascii=False, separators=(",", ":"))
+
+
+def make_single_qa(
+    sample: dict[str, Any],
+    field: str,
+    answer_format: str,
+    sequence: int,
+) -> dict[str, Any]:
+    spec = field_definitions()[field]
+    task = spec["choice_task"] if answer_format == "choice" else spec["open_task"]
+    choices = list(spec["choices"]) if answer_format == "choice" else []
+    return {
+        "id": f"{sample['id']}_{task}_{sequence:04d}",
+        "sample_id": sample["id"],
+        "base_id": sample["base_id"],
+        "split": sample["split"],
+        "image_path": sample["image_path"],
+        "audio_path": sample["audio_path"],
+        "task": task,
+        "prompt": make_choice_prompt(field) if answer_format == "choice" else make_open_prompt(field),
+        "choices": choices,
+        "fields": [field],
+        "field_count": 1,
+        "answer_format": answer_format,
+        "expected_answer": field_answer(sample, field),
+        "scoring": {"type": "choice_exact" if answer_format == "choice" else "open_short_exact"},
+        "condition": sample["condition"],
+        "label": sample["label"],
+    }
+
+
+def make_multi_qa(sample: dict[str, Any], fields: list[str], sequence: int) -> dict[str, Any]:
+    signature = "+".join(fields)
+    return {
+        "id": f"{sample['id']}_multi_field_open_json_{sequence:04d}",
+        "sample_id": sample["id"],
+        "base_id": sample["base_id"],
+        "split": sample["split"],
+        "image_path": sample["image_path"],
+        "audio_path": sample["audio_path"],
+        "task": "multi_field_open_json",
+        "prompt": make_multi_prompt(fields),
+        "choices": [],
+        "fields": fields,
+        "field_count": len(fields),
+        "field_signature": signature,
+        "answer_format": "open_json",
+        "expected_answer": field_answers_json(sample, fields),
+        "scoring": {"type": "json_exact_fields", "fields": fields},
+        "condition": sample["condition"],
+        "label": sample["label"],
+    }
+
+
+def sorted_by_reuse(candidates: list[dict[str, Any]], image_counts: Counter[str], rng: np.random.Generator) -> list[dict[str, Any]]:
+    order = list(candidates)
+    rng.shuffle(order)
+    order.sort(key=lambda sample: image_counts[sample["image_path"]])
+    return order
+
+
+def select_samples_for_answer(
     samples: list[dict[str, Any]],
-    answers: list[str],
-    answer_fn: Callable[[dict[str, Any]], str],
-    candidate_fn: Callable[[dict[str, Any]], bool],
-    per_answer: int,
+    field: str,
+    answer: str,
+    count: int,
+    image_counts: Counter[str],
     rng: np.random.Generator,
 ) -> list[dict[str, Any]]:
     selected: list[dict[str, Any]] = []
-    buckets: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
-    for sample in samples:
-        if candidate_fn(sample):
-            buckets[(answer_fn(sample), sample["split"])].append(sample)
-
-    for answer in answers:
-        split_targets = weighted_counts(per_answer, SPLIT_WEIGHTS)
-        for split, count in split_targets.items():
-            candidates = buckets[(answer, split)]
-            if len(candidates) < count:
-                raise ValueError(f"Not enough candidates for answer={answer!r}, split={split!r}: need {count}, got {len(candidates)}")
-            order = np.arange(len(candidates))
-            rng.shuffle(order)
-            selected.extend(candidates[int(index)] for index in order[:count])
+    candidates = [
+        sample
+        for sample in samples
+        if field in available_fields(sample) and field_answer(sample, field) == answer and image_counts[sample["image_path"]] < MAX_QA_PER_IMAGE
+    ]
+    if not candidates:
+        raise ValueError(f"No candidates for field={field!r}, answer={answer!r}")
+    while len(selected) < count:
+        usable = [sample for sample in candidates if image_counts[sample["image_path"]] < MAX_QA_PER_IMAGE]
+        if not usable:
+            raise ValueError(f"Not enough reusable images for field={field!r}, answer={answer!r}; need {count}, got {len(selected)}")
+        for sample in sorted_by_reuse(usable, image_counts, rng):
+            selected.append(sample)
+            image_counts[sample["image_path"]] += 1
+            if len(selected) == count:
+                break
     return selected
+
+
+def make_single_qa_items(
+    samples: list[dict[str, Any]],
+    count: int,
+    answer_format: str,
+    image_counts: Counter[str],
+    rng: np.random.Generator,
+) -> list[dict[str, Any]]:
+    field_weights = normalized_field_weights(list(field_definitions()))
+    field_counts = weighted_counts(count, field_weights)
+    qa_items: list[dict[str, Any]] = []
+    sequence = 0
+    for field, field_count in field_counts.items():
+        spec = field_definitions()[field]
+        answers = [answer for answer in spec["choices"] if any(field in available_fields(sample) and field_answer(sample, field) == answer for sample in samples)]
+        answer_counts = balanced_counts(field_count, answers)
+        for answer, answer_count in answer_counts.items():
+            selected = select_samples_for_answer(samples, field, str(answer), answer_count, image_counts, rng)
+            for sample in selected:
+                sequence += 1
+                qa_items.append(make_single_qa(sample, field, answer_format, sequence))
+    return qa_items
+
+
+def make_multi_qa_items(
+    samples: list[dict[str, Any]],
+    count: int,
+    field_count: int,
+    image_counts: Counter[str],
+    rng: np.random.Generator,
+) -> list[dict[str, Any]]:
+    qa_items: list[dict[str, Any]] = []
+    sequence = 0
+    attempts = 0
+    candidates = [sample for sample in samples if len(available_fields(sample)) >= field_count]
+    while len(qa_items) < count:
+        attempts += 1
+        if attempts > count * 100:
+            raise ValueError(f"Unable to sample {count} multi-field QA items with field_count={field_count}")
+        usable = [sample for sample in candidates if image_counts[sample["image_path"]] < MAX_QA_PER_IMAGE]
+        if not usable:
+            raise ValueError(f"No reusable images left for multi-field QA with field_count={field_count}")
+        sample = sorted_by_reuse(usable, image_counts, rng)[0]
+        fields = choose_fields(available_fields(sample), field_count, rng)
+        image_counts[sample["image_path"]] += 1
+        sequence += 1
+        qa_items.append(make_multi_qa(sample, fields, sequence))
+    return qa_items
 
 
 def make_qa_items(samples: list[dict[str, Any]], cfg: FinetuneConfig) -> list[dict[str, Any]]:
     rng = np.random.default_rng(cfg.seed + 17)
+    total = target_qa_count(cfg)
+    field_count_counts = weighted_counts(total, FIELD_COUNT_WEIGHTS)
+    single_format_counts = weighted_counts(field_count_counts[1], SINGLE_FORMAT_WEIGHTS)
+    image_counts: Counter[str] = Counter()
     qa_items: list[dict[str, Any]] = []
-    for task, task_def in task_definitions().items():
-        answers = task_def["answers"]
-        total_for_task = cfg.qa_per_task - (cfg.qa_per_task % len(answers))
-        per_answer = total_for_task // len(answers)
-        choices = list(answers)
-        selected = select_by_answer_and_split(
-            samples,
-            answers,
-            task_def["answer_fn"],
-            task_def["candidate_fn"],
-            per_answer,
-            rng,
-        )
-        for sample in selected:
-            expected = task_def["answer_fn"](sample)
-            qa_items.append(
-                {
-                    "id": f"{sample['id']}_{task}",
-                    "sample_id": sample["id"],
-                    "base_id": sample["base_id"],
-                    "split": sample["split"],
-                    "image_path": sample["image_path"],
-                    "audio_path": sample["audio_path"],
-                    "task": task,
-                    "prompt": task_prompt(task, choices),
-                    "choices": choices,
-                    "expected_answer": expected,
-                    "scoring": {"type": "choice_exact"},
-                    "condition": sample["condition"],
-                    "label": sample["label"],
-                }
-            )
+    qa_items.extend(make_single_qa_items(samples, single_format_counts["choice"], "choice", image_counts, rng))
+    qa_items.extend(make_single_qa_items(samples, single_format_counts["open_short"], "open_short", image_counts, rng))
+    qa_items.extend(make_multi_qa_items(samples, field_count_counts[2], 2, image_counts, rng))
+    qa_items.extend(make_multi_qa_items(samples, field_count_counts[3], 3, image_counts, rng))
     rng.shuffle(qa_items)
     return qa_items
 
@@ -422,6 +639,11 @@ def to_qwen_record(qa: dict[str, Any]) -> dict[str, Any]:
             "base_id": qa["base_id"],
             "task": qa["task"],
             "choices": qa["choices"],
+            "fields": qa["fields"],
+            "field_count": qa["field_count"],
+            "answer_format": qa["answer_format"],
+            "field_signature": qa.get("field_signature"),
+            "scoring": qa["scoring"],
             "condition": qa["condition"],
             "label": qa["label"],
         },
@@ -438,21 +660,45 @@ def validate_dataset(samples: list[dict[str, Any]], qa_items: list[dict[str, Any
     if max(class_counts.values()) - min(class_counts.values()) > 1:
         errors.append(f"Signal classes are imbalanced: {dict(class_counts)}")
 
-    task_counts = Counter(item["task"] for item in qa_items)
-    if max(task_counts.values()) - min(task_counts.values()) > len(FREQUENCY_CHOICES_HZ):
-        errors.append(f"Tasks are imbalanced: {dict(task_counts)}")
+    if not qa_items:
+        errors.append("No QA items were generated")
+        return errors
 
-    for task in task_definitions():
-        rows = [item for item in qa_items if item["task"] == task]
-        answer_counts = Counter(item["expected_answer"] for item in rows)
-        if answer_counts and max(answer_counts.values()) - min(answer_counts.values()) > 1:
-            errors.append(f"Answers are imbalanced for {task}: {dict(answer_counts)}")
+    target_total = len(qa_items)
+    expected_field_counts = weighted_counts(target_total, FIELD_COUNT_WEIGHTS)
+    actual_field_counts = Counter(item["field_count"] for item in qa_items)
+    for field_count, expected in expected_field_counts.items():
+        actual = actual_field_counts[field_count]
+        tolerance = max(2, int(math.ceil(expected * 0.1)))
+        if abs(actual - expected) > tolerance:
+            errors.append(f"Field-count distribution drifted for {field_count}: expected about {expected}, got {actual}")
+
+    single_rows = [item for item in qa_items if item["field_count"] == 1]
+    expected_single_formats = weighted_counts(len(single_rows), SINGLE_FORMAT_WEIGHTS)
+    actual_single_formats = Counter(item["answer_format"] for item in single_rows)
+    for answer_format, expected in expected_single_formats.items():
+        actual = actual_single_formats[answer_format]
+        tolerance = max(2, int(math.ceil(expected * 0.1)))
+        if abs(actual - expected) > tolerance:
+            errors.append(f"Single-answer format distribution drifted for {answer_format}: expected about {expected}, got {actual}")
 
     base_splits: dict[str, set[str]] = defaultdict(set)
     image_splits: dict[str, set[str]] = defaultdict(set)
     for item in qa_items:
-        if item["expected_answer"] not in item["choices"]:
+        if item["answer_format"] == "choice" and item["expected_answer"] not in item["choices"]:
             errors.append(f"Answer not in choices for {item['id']}")
+        if item["answer_format"] == "open_short" and ("{" in item["expected_answer"] or "。" in item["expected_answer"]):
+            errors.append(f"Open-short answer is not short for {item['id']}: {item['expected_answer']!r}")
+        if item["answer_format"] == "open_json":
+            try:
+                parsed = json.loads(item["expected_answer"])
+            except json.JSONDecodeError as exc:
+                errors.append(f"JSON answer is invalid for {item['id']}: {exc}")
+            else:
+                if set(parsed) != set(item["fields"]):
+                    errors.append(f"JSON fields mismatch for {item['id']}: expected {item['fields']}, got {sorted(parsed)}")
+        if len(item["fields"]) != item["field_count"]:
+            errors.append(f"Field count mismatch for {item['id']}")
         base_splits[item["base_id"]].add(item["split"])
         image_splits[item["image_path"]].add(item["split"])
     leaked_bases = [base_id for base_id, splits in base_splits.items() if len(splits) > 1]
@@ -461,6 +707,11 @@ def validate_dataset(samples: list[dict[str, Any]], qa_items: list[dict[str, Any
         errors.append(f"Base IDs leak across splits: {leaked_bases[:5]}")
     if leaked_images:
         errors.append(f"Images leak across splits: {leaked_images[:5]}")
+
+    image_qa_counts = Counter(item["image_path"] for item in qa_items)
+    overused_images = [image for image, count in image_qa_counts.items() if count > MAX_QA_PER_IMAGE]
+    if overused_images:
+        errors.append(f"Images exceed max QA reuse ({MAX_QA_PER_IMAGE}): {overused_images[:5]}")
 
     for sample in samples:
         condition = sample["condition"]
@@ -479,6 +730,12 @@ def write_split_files(out_dir: Path, qa_items: list[dict[str, Any]]) -> None:
 
 def write_report(out_dir: Path, cfg: FinetuneConfig, samples: list[dict[str, Any]], qa_items: list[dict[str, Any]], errors: list[str]) -> None:
     sample_condition_counts = Counter(f"{sample['condition']['noise_level']}/{sample['condition']['channel_condition']}" for sample in samples)
+    single_rows = [item for item in qa_items if item["field_count"] == 1]
+    field_counts = Counter(field for item in qa_items for field in item["fields"])
+    single_field_counts = Counter(item["fields"][0] for item in single_rows)
+    answer_format_counts = Counter(item["answer_format"] for item in qa_items)
+    field_count_counts = Counter(item["field_count"] for item in qa_items)
+    image_reuse_counts = Counter(Counter(item["image_path"] for item in qa_items).values())
     lines = [
         "# VLM Fine-tuning Dataset Report",
         "",
@@ -486,9 +743,13 @@ def write_report(out_dir: Path, cfg: FinetuneConfig, samples: list[dict[str, Any
         "",
         f"- samples_per_class: `{cfg.samples_per_class}`",
         f"- qa_per_task: `{cfg.qa_per_task}`",
+        f"- target_qa_items: `{target_qa_count(cfg)}`",
         f"- sample_rate_hz: `{cfg.sample_rate_hz}`",
         f"- duration_s: `{cfg.duration_s}`",
         f"- image_kind: `diagnostic_triplet`",
+        f"- field_count_weights: `{FIELD_COUNT_WEIGHTS}`",
+        f"- single_format_weights: `{SINGLE_FORMAT_WEIGHTS}`",
+        f"- max_qa_per_image: `{MAX_QA_PER_IMAGE}`",
         "",
         "## Sample Distribution",
         "",
@@ -501,14 +762,22 @@ def write_report(out_dir: Path, cfg: FinetuneConfig, samples: list[dict[str, Any
         "",
         f"- total QA: `{len(qa_items)}`",
         f"- by task: `{counter_dict([item['task'] for item in qa_items])}`",
+        f"- by answer format: `{dict(sorted(answer_format_counts.items()))}`",
+        f"- by field count: `{dict(sorted(field_count_counts.items()))}`",
+        f"- by field occurrence: `{dict(sorted(field_counts.items()))}`",
+        f"- by single field: `{dict(sorted(single_field_counts.items()))}`",
+        f"- by QA reuse per image: `{dict(sorted(image_reuse_counts.items()))}`",
         f"- by split: `{counter_dict([item['split'] for item in qa_items])}`",
         "",
         "## Answer Distribution By Task",
         "",
     ]
-    for task in task_definitions():
+    for task in sorted(set(item["task"] for item in qa_items)):
         task_rows = [item for item in qa_items if item["task"] == task]
-        lines.append(f"- {task}: `{counter_dict([item['expected_answer'] for item in task_rows])}`")
+        if task == "multi_field_open_json":
+            lines.append(f"- {task} signatures: `{counter_dict([item['field_signature'] for item in task_rows])}`")
+        else:
+            lines.append(f"- {task}: `{counter_dict([item['expected_answer'] for item in task_rows])}`")
     lines.extend(["", "## Validation", ""])
     if errors:
         lines.extend(f"- ERROR: {error}" for error in errors)
@@ -538,6 +807,10 @@ def generate_dataset(cfg: FinetuneConfig) -> tuple[list[dict[str, Any]], list[di
             "sample_splits": {sample["id"]: sample["split"] for sample in samples},
             "split_weights": SPLIT_WEIGHTS,
             "condition_weights": {f"{noise}/{channel}": weight for (noise, channel), weight in CONDITION_WEIGHTS.items()},
+            "field_count_weights": FIELD_COUNT_WEIGHTS,
+            "single_format_weights": SINGLE_FORMAT_WEIGHTS,
+            "field_weights": FIELD_WEIGHTS,
+            "max_qa_per_image": MAX_QA_PER_IMAGE,
         },
     )
     write_json(out_dir / "dataset_config.json", {**asdict(cfg), "output": str(cfg.output)})
@@ -550,12 +823,13 @@ def generate_dataset(cfg: FinetuneConfig) -> tuple[list[dict[str, Any]], list[di
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Generate a balanced Qwen2.5-VL SFT dataset for underwater-acoustic diagnostic images.")
-    parser.add_argument("--output", type=Path, default=Path("output") / "vlm_finetune" / "v1")
+    parser.add_argument("--output", type=Path, default=Path("data") / "vlm_finetune" / "v1")
     parser.add_argument("--sample-rate", type=int, default=16000)
     parser.add_argument("--duration", type=float, default=2.0)
     parser.add_argument("--seed", type=int, default=20261001)
     parser.add_argument("--samples-per-class", type=int, default=1000)
-    parser.add_argument("--qa-per-task", type=int, default=1000)
+    parser.add_argument("--qa-per-task", type=int, default=1000, help="Compatibility default used as 5 * qa_per_task when --target-qa-items is omitted.")
+    parser.add_argument("--target-qa-items", type=int, default=None, help="Total QA items to generate with the v2 question-type probability distribution.")
     parser.add_argument("--real-noise-root", default="exclude")
     parser.add_argument("--bellhop-exe", default="bellhop.exe")
     parser.add_argument("--max-freq", type=float, default=8000.0)
@@ -572,6 +846,7 @@ def main() -> None:
         seed=args.seed,
         samples_per_class=args.samples_per_class,
         qa_per_task=args.qa_per_task,
+        target_qa_items=args.target_qa_items,
         real_noise_root=args.real_noise_root,
         bellhop_exe=args.bellhop_exe,
         max_freq_hz=args.max_freq,

@@ -287,7 +287,7 @@ def save_diagnostic_triplet(audio_path: Path, output_path: Path, max_freq: float
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate VLM-readable diagnostic images for the probe dataset.")
-    parser.add_argument("--dataset", type=Path, default=Path("output") / "zero_shot_probe" / "v1")
+    parser.add_argument("--dataset", type=Path, default=Path("data") / "zero_shot_probe" / "v1")
     parser.add_argument(
         "--image-kind",
         default="composite",

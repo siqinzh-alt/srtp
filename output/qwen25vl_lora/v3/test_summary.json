@@ -1,0 +1,882 @@
+{
+  "answer_format:choice": {
+    "correct": 116,
+    "total": 138,
+    "accuracy": 0.84058
+  },
+  "answer_format:open_json": {
+    "correct": 174,
+    "total": 213,
+    "accuracy": 0.816901
+  },
+  "answer_format:open_short": {
+    "correct": 213,
+    "total": 250,
+    "accuracy": 0.852
+  },
+  "channel:archival_recording": {
+    "correct": 23,
+    "total": 110,
+    "accuracy": 0.209091
+  },
+  "channel:bellhop": {
+    "correct": 37,
+    "total": 39,
+    "accuracy": 0.948718
+  },
+  "channel:direct": {
+    "correct": 443,
+    "total": 452,
+    "accuracy": 0.980088
+  },
+  "field_count:1": {
+    "correct": 329,
+    "total": 388,
+    "accuracy": 0.847938
+  },
+  "field_count:2": {
+    "correct": 136,
+    "total": 158,
+    "accuracy": 0.860759
+  },
+  "field_count:3": {
+    "correct": 38,
+    "total": 55,
+    "accuracy": 0.690909
+  },
+  "fields:bio_call_description": {
+    "correct": 0,
+    "total": 6,
+    "accuracy": 0.0
+  },
+  "fields:bio_call_description+bio_species_or_group": {
+    "correct": 0,
+    "total": 6,
+    "accuracy": 0.0
+  },
+  "fields:bio_call_description+bio_species_or_group+bio_species_code": {
+    "correct": 0,
+    "total": 2,
+    "accuracy": 0.0
+  },
+  "fields:bio_species_code": {
+    "correct": 4,
+    "total": 18,
+    "accuracy": 0.222222
+  },
+  "fields:bio_species_code+bio_species_or_group": {
+    "correct": 1,
+    "total": 2,
+    "accuracy": 0.5
+  },
+  "fields:bio_species_code+bio_species_or_group+bio_call_description": {
+    "correct": 0,
+    "total": 2,
+    "accuracy": 0.0
+  },
+  "fields:bio_species_or_group": {
+    "correct": 17,
+    "total": 48,
+    "accuracy": 0.354167
+  },
+  "fields:bio_species_or_group+bio_call_description": {
+    "correct": 0,
+    "total": 4,
+    "accuracy": 0.0
+  },
+  "fields:bio_species_or_group+bio_call_description+bio_species_code": {
+    "correct": 0,
+    "total": 3,
+    "accuracy": 0.0
+  },
+  "fields:bio_species_or_group+bio_species_code": {
+    "correct": 1,
+    "total": 12,
+    "accuracy": 0.083333
+  },
+  "fields:bio_species_or_group+bio_species_code+bio_call_description": {
+    "correct": 0,
+    "total": 7,
+    "accuracy": 0.0
+  },
+  "fields:bpsk_symbol_rate": {
+    "correct": 23,
+    "total": 31,
+    "accuracy": 0.741935
+  },
+  "fields:bpsk_symbol_rate+channel_condition+signal_type": {
+    "correct": 2,
+    "total": 2,
+    "accuracy": 1.0
+  },
+  "fields:bpsk_symbol_rate+noise_level": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "fields:bpsk_symbol_rate+noise_level+channel_condition": {
+    "correct": 1,
+    "total": 2,
+    "accuracy": 0.5
+  },
+  "fields:bpsk_symbol_rate+noise_level+signal_type": {
+    "correct": 0,
+    "total": 1,
+    "accuracy": 0.0
+  },
+  "fields:bpsk_symbol_rate+signal_type": {
+    "correct": 5,
+    "total": 5,
+    "accuracy": 1.0
+  },
+  "fields:bpsk_symbol_rate+signal_type+noise_level": {
+    "correct": 0,
+    "total": 1,
+    "accuracy": 0.0
+  },
+  "fields:channel_condition": {
+    "correct": 33,
+    "total": 33,
+    "accuracy": 1.0
+  },
+  "fields:channel_condition+bpsk_symbol_rate+signal_type": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "fields:channel_condition+fsk_order": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "fields:channel_condition+lfm_direction": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "fields:channel_condition+noise_level": {
+    "correct": 5,
+    "total": 5,
+    "accuracy": 1.0
+  },
+  "fields:channel_condition+signal_type": {
+    "correct": 9,
+    "total": 9,
+    "accuracy": 1.0
+  },
+  "fields:channel_condition+signal_type+noise_level": {
+    "correct": 5,
+    "total": 5,
+    "accuracy": 1.0
+  },
+  "fields:fsk_order": {
+    "correct": 29,
+    "total": 29,
+    "accuracy": 1.0
+  },
+  "fields:fsk_order+channel_condition": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "fields:fsk_order+noise_level": {
+    "correct": 3,
+    "total": 3,
+    "accuracy": 1.0
+  },
+  "fields:fsk_order+signal_type": {
+    "correct": 5,
+    "total": 5,
+    "accuracy": 1.0
+  },
+  "fields:lfm_direction": {
+    "correct": 36,
+    "total": 36,
+    "accuracy": 1.0
+  },
+  "fields:lfm_direction+channel_condition": {
+    "correct": 2,
+    "total": 2,
+    "accuracy": 1.0
+  },
+  "fields:lfm_direction+signal_type": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "fields:main_frequency_hz": {
+    "correct": 71,
+    "total": 71,
+    "accuracy": 1.0
+  },
+  "fields:main_frequency_hz+channel_condition+signal_type": {
+    "correct": 2,
+    "total": 2,
+    "accuracy": 1.0
+  },
+  "fields:main_frequency_hz+noise_level": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "fields:main_frequency_hz+noise_level+channel_condition": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "fields:main_frequency_hz+signal_type": {
+    "correct": 5,
+    "total": 5,
+    "accuracy": 1.0
+  },
+  "fields:main_frequency_hz+signal_type+channel_condition": {
+    "correct": 2,
+    "total": 2,
+    "accuracy": 1.0
+  },
+  "fields:noise_level": {
+    "correct": 43,
+    "total": 43,
+    "accuracy": 1.0
+  },
+  "fields:noise_level+bpsk_symbol_rate": {
+    "correct": 5,
+    "total": 5,
+    "accuracy": 1.0
+  },
+  "fields:noise_level+channel_condition": {
+    "correct": 5,
+    "total": 5,
+    "accuracy": 1.0
+  },
+  "fields:noise_level+channel_condition+signal_type": {
+    "correct": 3,
+    "total": 3,
+    "accuracy": 1.0
+  },
+  "fields:noise_level+fsk_order": {
+    "correct": 3,
+    "total": 3,
+    "accuracy": 1.0
+  },
+  "fields:noise_level+lfm_direction": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "fields:noise_level+signal_type": {
+    "correct": 20,
+    "total": 20,
+    "accuracy": 1.0
+  },
+  "fields:noise_level+signal_type+channel_condition": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "fields:noise_level+signal_type+fsk_order": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "fields:signal_type": {
+    "correct": 73,
+    "total": 73,
+    "accuracy": 1.0
+  },
+  "fields:signal_type+bpsk_symbol_rate": {
+    "correct": 4,
+    "total": 4,
+    "accuracy": 1.0
+  },
+  "fields:signal_type+bpsk_symbol_rate+noise_level": {
+    "correct": 2,
+    "total": 2,
+    "accuracy": 1.0
+  },
+  "fields:signal_type+channel_condition": {
+    "correct": 21,
+    "total": 21,
+    "accuracy": 1.0
+  },
+  "fields:signal_type+channel_condition+lfm_direction": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "fields:signal_type+channel_condition+noise_level": {
+    "correct": 2,
+    "total": 2,
+    "accuracy": 1.0
+  },
+  "fields:signal_type+fsk_order": {
+    "correct": 3,
+    "total": 3,
+    "accuracy": 1.0
+  },
+  "fields:signal_type+fsk_order+noise_level": {
+    "correct": 3,
+    "total": 3,
+    "accuracy": 1.0
+  },
+  "fields:signal_type+lfm_direction": {
+    "correct": 5,
+    "total": 5,
+    "accuracy": 1.0
+  },
+  "fields:signal_type+main_frequency_hz+channel_condition": {
+    "correct": 2,
+    "total": 2,
+    "accuracy": 1.0
+  },
+  "fields:signal_type+main_frequency_hz+noise_level": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "fields:signal_type+noise_level": {
+    "correct": 27,
+    "total": 27,
+    "accuracy": 1.0
+  },
+  "fields:signal_type+noise_level+bpsk_symbol_rate": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "fields:signal_type+noise_level+channel_condition": {
+    "correct": 5,
+    "total": 5,
+    "accuracy": 1.0
+  },
+  "fields:signal_type+noise_level+lfm_direction": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "fields:signal_type+noise_level+main_frequency_hz": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "noise:clean": {
+    "correct": 391,
+    "total": 399,
+    "accuracy": 0.97995
+  },
+  "noise:field_recording": {
+    "correct": 23,
+    "total": 110,
+    "accuracy": 0.209091
+  },
+  "noise:real_noise_heavy": {
+    "correct": 38,
+    "total": 40,
+    "accuracy": 0.95
+  },
+  "noise:real_noise_light": {
+    "correct": 51,
+    "total": 52,
+    "accuracy": 0.980769
+  },
+  "overall:overall": {
+    "correct": 503,
+    "total": 601,
+    "accuracy": 0.836938
+  },
+  "task:bio_call_description_open_short": {
+    "correct": 0,
+    "total": 6,
+    "accuracy": 0.0
+  },
+  "task:bio_species_code_choice": {
+    "correct": 2,
+    "total": 7,
+    "accuracy": 0.285714
+  },
+  "task:bio_species_code_open_short": {
+    "correct": 2,
+    "total": 11,
+    "accuracy": 0.181818
+  },
+  "task:bio_species_or_group_choice": {
+    "correct": 5,
+    "total": 19,
+    "accuracy": 0.263158
+  },
+  "task:bio_species_or_group_open_short": {
+    "correct": 12,
+    "total": 29,
+    "accuracy": 0.413793
+  },
+  "task:bpsk_symbol_rate_choice": {
+    "correct": 10,
+    "total": 13,
+    "accuracy": 0.769231
+  },
+  "task:bpsk_symbol_rate_open_short": {
+    "correct": 13,
+    "total": 18,
+    "accuracy": 0.722222
+  },
+  "task:channel_condition_choice": {
+    "correct": 12,
+    "total": 12,
+    "accuracy": 1.0
+  },
+  "task:channel_condition_open_short": {
+    "correct": 21,
+    "total": 21,
+    "accuracy": 1.0
+  },
+  "task:fsk_order_choice": {
+    "correct": 9,
+    "total": 9,
+    "accuracy": 1.0
+  },
+  "task:fsk_order_open_short": {
+    "correct": 20,
+    "total": 20,
+    "accuracy": 1.0
+  },
+  "task:lfm_direction_choice": {
+    "correct": 11,
+    "total": 11,
+    "accuracy": 1.0
+  },
+  "task:lfm_direction_open_short": {
+    "correct": 25,
+    "total": 25,
+    "accuracy": 1.0
+  },
+  "task:main_frequency_choice": {
+    "correct": 21,
+    "total": 21,
+    "accuracy": 1.0
+  },
+  "task:main_frequency_open_short": {
+    "correct": 50,
+    "total": 50,
+    "accuracy": 1.0
+  },
+  "task:multi_field_open_json": {
+    "correct": 174,
+    "total": 213,
+    "accuracy": 0.816901
+  },
+  "task:noise_level_choice": {
+    "correct": 16,
+    "total": 16,
+    "accuracy": 1.0
+  },
+  "task:noise_level_open_short": {
+    "correct": 27,
+    "total": 27,
+    "accuracy": 1.0
+  },
+  "task:signal_type_choice": {
+    "correct": 30,
+    "total": 30,
+    "accuracy": 1.0
+  },
+  "task:signal_type_open_short": {
+    "correct": 43,
+    "total": 43,
+    "accuracy": 1.0
+  },
+  "task_channel:bio_call_description_open_short|archival_recording": {
+    "correct": 0,
+    "total": 6,
+    "accuracy": 0.0
+  },
+  "task_channel:bio_species_code_choice|archival_recording": {
+    "correct": 2,
+    "total": 7,
+    "accuracy": 0.285714
+  },
+  "task_channel:bio_species_code_open_short|archival_recording": {
+    "correct": 2,
+    "total": 11,
+    "accuracy": 0.181818
+  },
+  "task_channel:bio_species_or_group_choice|archival_recording": {
+    "correct": 5,
+    "total": 19,
+    "accuracy": 0.263158
+  },
+  "task_channel:bio_species_or_group_open_short|archival_recording": {
+    "correct": 12,
+    "total": 29,
+    "accuracy": 0.413793
+  },
+  "task_channel:bpsk_symbol_rate_choice|bellhop": {
+    "correct": 0,
+    "total": 1,
+    "accuracy": 0.0
+  },
+  "task_channel:bpsk_symbol_rate_choice|direct": {
+    "correct": 10,
+    "total": 12,
+    "accuracy": 0.833333
+  },
+  "task_channel:bpsk_symbol_rate_open_short|direct": {
+    "correct": 13,
+    "total": 18,
+    "accuracy": 0.722222
+  },
+  "task_channel:channel_condition_choice|bellhop": {
+    "correct": 5,
+    "total": 5,
+    "accuracy": 1.0
+  },
+  "task_channel:channel_condition_choice|direct": {
+    "correct": 7,
+    "total": 7,
+    "accuracy": 1.0
+  },
+  "task_channel:channel_condition_open_short|bellhop": {
+    "correct": 10,
+    "total": 10,
+    "accuracy": 1.0
+  },
+  "task_channel:channel_condition_open_short|direct": {
+    "correct": 11,
+    "total": 11,
+    "accuracy": 1.0
+  },
+  "task_channel:fsk_order_choice|direct": {
+    "correct": 9,
+    "total": 9,
+    "accuracy": 1.0
+  },
+  "task_channel:fsk_order_open_short|bellhop": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "task_channel:fsk_order_open_short|direct": {
+    "correct": 19,
+    "total": 19,
+    "accuracy": 1.0
+  },
+  "task_channel:lfm_direction_choice|bellhop": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "task_channel:lfm_direction_choice|direct": {
+    "correct": 10,
+    "total": 10,
+    "accuracy": 1.0
+  },
+  "task_channel:lfm_direction_open_short|bellhop": {
+    "correct": 3,
+    "total": 3,
+    "accuracy": 1.0
+  },
+  "task_channel:lfm_direction_open_short|direct": {
+    "correct": 22,
+    "total": 22,
+    "accuracy": 1.0
+  },
+  "task_channel:main_frequency_choice|direct": {
+    "correct": 21,
+    "total": 21,
+    "accuracy": 1.0
+  },
+  "task_channel:main_frequency_open_short|bellhop": {
+    "correct": 2,
+    "total": 2,
+    "accuracy": 1.0
+  },
+  "task_channel:main_frequency_open_short|direct": {
+    "correct": 48,
+    "total": 48,
+    "accuracy": 1.0
+  },
+  "task_channel:multi_field_open_json|archival_recording": {
+    "correct": 2,
+    "total": 38,
+    "accuracy": 0.052632
+  },
+  "task_channel:multi_field_open_json|bellhop": {
+    "correct": 8,
+    "total": 9,
+    "accuracy": 0.888889
+  },
+  "task_channel:multi_field_open_json|direct": {
+    "correct": 164,
+    "total": 166,
+    "accuracy": 0.987952
+  },
+  "task_channel:noise_level_choice|bellhop": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "task_channel:noise_level_choice|direct": {
+    "correct": 15,
+    "total": 15,
+    "accuracy": 1.0
+  },
+  "task_channel:noise_level_open_short|bellhop": {
+    "correct": 3,
+    "total": 3,
+    "accuracy": 1.0
+  },
+  "task_channel:noise_level_open_short|direct": {
+    "correct": 24,
+    "total": 24,
+    "accuracy": 1.0
+  },
+  "task_channel:signal_type_choice|bellhop": {
+    "correct": 2,
+    "total": 2,
+    "accuracy": 1.0
+  },
+  "task_channel:signal_type_choice|direct": {
+    "correct": 28,
+    "total": 28,
+    "accuracy": 1.0
+  },
+  "task_channel:signal_type_open_short|bellhop": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "task_channel:signal_type_open_short|direct": {
+    "correct": 42,
+    "total": 42,
+    "accuracy": 1.0
+  },
+  "task_noise:bio_call_description_open_short|field_recording": {
+    "correct": 0,
+    "total": 6,
+    "accuracy": 0.0
+  },
+  "task_noise:bio_species_code_choice|field_recording": {
+    "correct": 2,
+    "total": 7,
+    "accuracy": 0.285714
+  },
+  "task_noise:bio_species_code_open_short|field_recording": {
+    "correct": 2,
+    "total": 11,
+    "accuracy": 0.181818
+  },
+  "task_noise:bio_species_or_group_choice|field_recording": {
+    "correct": 5,
+    "total": 19,
+    "accuracy": 0.263158
+  },
+  "task_noise:bio_species_or_group_open_short|field_recording": {
+    "correct": 12,
+    "total": 29,
+    "accuracy": 0.413793
+  },
+  "task_noise:bpsk_symbol_rate_choice|clean": {
+    "correct": 8,
+    "total": 11,
+    "accuracy": 0.727273
+  },
+  "task_noise:bpsk_symbol_rate_choice|real_noise_heavy": {
+    "correct": 2,
+    "total": 2,
+    "accuracy": 1.0
+  },
+  "task_noise:bpsk_symbol_rate_open_short|clean": {
+    "correct": 12,
+    "total": 15,
+    "accuracy": 0.8
+  },
+  "task_noise:bpsk_symbol_rate_open_short|real_noise_heavy": {
+    "correct": 0,
+    "total": 2,
+    "accuracy": 0.0
+  },
+  "task_noise:bpsk_symbol_rate_open_short|real_noise_light": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "task_noise:channel_condition_choice|clean": {
+    "correct": 11,
+    "total": 11,
+    "accuracy": 1.0
+  },
+  "task_noise:channel_condition_choice|real_noise_heavy": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "task_noise:channel_condition_open_short|clean": {
+    "correct": 20,
+    "total": 20,
+    "accuracy": 1.0
+  },
+  "task_noise:channel_condition_open_short|real_noise_light": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "task_noise:fsk_order_choice|clean": {
+    "correct": 6,
+    "total": 6,
+    "accuracy": 1.0
+  },
+  "task_noise:fsk_order_choice|real_noise_heavy": {
+    "correct": 2,
+    "total": 2,
+    "accuracy": 1.0
+  },
+  "task_noise:fsk_order_choice|real_noise_light": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "task_noise:fsk_order_open_short|clean": {
+    "correct": 17,
+    "total": 17,
+    "accuracy": 1.0
+  },
+  "task_noise:fsk_order_open_short|real_noise_light": {
+    "correct": 3,
+    "total": 3,
+    "accuracy": 1.0
+  },
+  "task_noise:lfm_direction_choice|clean": {
+    "correct": 9,
+    "total": 9,
+    "accuracy": 1.0
+  },
+  "task_noise:lfm_direction_choice|real_noise_light": {
+    "correct": 2,
+    "total": 2,
+    "accuracy": 1.0
+  },
+  "task_noise:lfm_direction_open_short|clean": {
+    "correct": 20,
+    "total": 20,
+    "accuracy": 1.0
+  },
+  "task_noise:lfm_direction_open_short|real_noise_heavy": {
+    "correct": 4,
+    "total": 4,
+    "accuracy": 1.0
+  },
+  "task_noise:lfm_direction_open_short|real_noise_light": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "task_noise:main_frequency_choice|clean": {
+    "correct": 18,
+    "total": 18,
+    "accuracy": 1.0
+  },
+  "task_noise:main_frequency_choice|real_noise_heavy": {
+    "correct": 2,
+    "total": 2,
+    "accuracy": 1.0
+  },
+  "task_noise:main_frequency_choice|real_noise_light": {
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+  },
+  "task_noise:main_frequency_open_short|clean": {
+    "correct": 41,
+    "total": 41,
+    "accuracy": 1.0
+  },
+  "task_noise:main_frequency_open_short|real_noise_heavy": {
+    "correct": 4,
+    "total": 4,
+    "accuracy": 1.0
+  },
+  "task_noise:main_frequency_open_short|real_noise_light": {
+    "correct": 5,
+    "total": 5,
+    "accuracy": 1.0
+  },
+  "task_noise:multi_field_open_json|clean": {
+    "correct": 152,
+    "total": 154,
+    "accuracy": 0.987013
+  },
+  "task_noise:multi_field_open_json|field_recording": {
+    "correct": 2,
+    "total": 38,
+    "accuracy": 0.052632
+  },
+  "task_noise:multi_field_open_json|real_noise_heavy": {
+    "correct": 6,
+    "total": 6,
+    "accuracy": 1.0
+  },
+  "task_noise:multi_field_open_json|real_noise_light": {
+    "correct": 14,
+    "total": 15,
+    "accuracy": 0.933333
+  },
+  "task_noise:noise_level_choice|clean": {
+    "correct": 7,
+    "total": 7,
+    "accuracy": 1.0
+  },
+  "task_noise:noise_level_choice|real_noise_heavy": {
+    "correct": 3,
+    "total": 3,
+    "accuracy": 1.0
+  },
+  "task_noise:noise_level_choice|real_noise_light": {
+    "correct": 6,
+    "total": 6,
+    "accuracy": 1.0
+  },
+  "task_noise:noise_level_open_short|clean": {
+    "correct": 11,
+    "total": 11,
+    "accuracy": 1.0
+  },
+  "task_noise:noise_level_open_short|real_noise_heavy": {
+    "correct": 9,
+    "total": 9,
+    "accuracy": 1.0
+  },
+  "task_noise:noise_level_open_short|real_noise_light": {
+    "correct": 7,
+    "total": 7,
+    "accuracy": 1.0
+  },
+  "task_noise:signal_type_choice|clean": {
+    "correct": 25,
+    "total": 25,
+    "accuracy": 1.0
+  },
+  "task_noise:signal_type_choice|real_noise_heavy": {
+    "correct": 2,
+    "total": 2,
+    "accuracy": 1.0
+  },
+  "task_noise:signal_type_choice|real_noise_light": {
+    "correct": 3,
+    "total": 3,
+    "accuracy": 1.0
+  },
+  "task_noise:signal_type_open_short|clean": {
+    "correct": 34,
+    "total": 34,
+    "accuracy": 1.0
+  },
+  "task_noise:signal_type_open_short|real_noise_heavy": {
+    "correct": 3,
+    "total": 3,
+    "accuracy": 1.0
+  },
+  "task_noise:signal_type_open_short|real_noise_light": {
+    "correct": 6,
+    "total": 6,
+    "accuracy": 1.0
+  }
+}

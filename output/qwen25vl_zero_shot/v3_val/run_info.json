@@ -1,0 +1,25 @@
+{
+  "instance": {
+    "uuid": "9rp6pe1dc2-bd7c9977",
+    "alias": "A01",
+    "gpu": "NVIDIA GeForce RTX 4080",
+    "vram_mib": 32760,
+    "flavor": "vGPU-32GB"
+  },
+  "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+  "mode": "zero-shot base model, no LoRA adapter",
+  "dataset": "data/vlm_finetune/v3/val.jsonl",
+  "num_examples": 639,
+  "command": "python probe_dataset/evaluate_qwen25vl_lora.py --dataset data/vlm_finetune/v3 --data-file val.jsonl --model Qwen/Qwen2.5-VL-7B-Instruct --no-adapter --output output/qwen25vl_zero_shot/v3_val/val_predictions.jsonl --summary output/qwen25vl_zero_shot/v3_val/val_summary.json --batch-size 1 --max-pixels 1003520",
+  "result": {
+    "correct": 122,
+    "total": 639,
+    "accuracy": 0.190923
+  },
+  "observed_gpu_memory_used_mib": 17158,
+  "timing_from_log": {
+    "model_download": "53m28s",
+    "inference": "12m34s"
+  },
+  "shutdown_verified": true
+}
