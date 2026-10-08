@@ -1,0 +1,2060 @@
+[
+  {
+    "id": "vlmft_001474_fsk_order_open_short_1354",
+    "task": "fsk_order_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "fsk_order"
+    ],
+    "field_count": 1,
+    "field_signature": "fsk_order",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "fsk_order",
+        "correct": true,
+        "reason": "4 is equivalent to 4FSK."
+      }
+    ],
+    "expected_answer": "4FSK",
+    "response": "4"
+  },
+  {
+    "id": "vlmft_001716_multi_field_open_json_0196",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "noise_level",
+      "signal_type",
+      "channel_condition"
+    ],
+    "field_count": 3,
+    "field_signature": "noise_level+signal_type+channel_condition",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "Low noise is not equivalent to clean."
+      },
+      {
+        "field": "signal_type",
+        "correct": false,
+        "reason": "Single-frequency/CW is not LFM."
+      },
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "Stable/clear condition is acceptable for direct."
+      }
+    ],
+    "expected_answer": "{\"noise_level\":\"clean\",\"signal_type\":\"LFM\",\"channel_condition\":\"direct\"}",
+    "response": "```json\n{\n  \"noise_level\": \"low\",\n  \"signal_type\": \"single-frequency\",\n  \"channel_condition\": \"stable\"\n}\n```"
+  },
+  {
+    "id": "vlmft_002026_multi_field_open_json_0914",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "noise_level",
+      "lfm_direction"
+    ],
+    "field_count": 2,
+    "field_signature": "noise_level+lfm_direction",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "Low noise is not equivalent to clean."
+      },
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "Downward is equivalent to 降频."
+      }
+    ],
+    "expected_answer": "{\"noise_level\":\"clean\",\"lfm_direction\":\"降频\"}",
+    "response": "```json\n{\n  \"noise_level\": \"low\",\n  \"lfm_direction\": \"downward\"\n}\n```"
+  },
+  {
+    "id": "vlmft_002711_multi_field_open_json_0904",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "lfm_direction",
+      "signal_type"
+    ],
+    "field_count": 2,
+    "field_signature": "lfm_direction+signal_type",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "Downward is equivalent to 降频."
+      },
+      {
+        "field": "signal_type",
+        "correct": false,
+        "reason": "Unknown does not match LFM."
+      }
+    ],
+    "expected_answer": "{\"lfm_direction\":\"降频\",\"signal_type\":\"LFM\"}",
+    "response": "```json\n{\n  \"lfm_direction\": \"downward\",\n  \"signal_type\": \"unknown\"\n}\n```"
+  },
+  {
+    "id": "vlmft_002617_multi_field_open_json_0170",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "noise_level",
+      "signal_type",
+      "channel_condition"
+    ],
+    "field_count": 3,
+    "field_signature": "noise_level+signal_type+channel_condition",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "noise_level",
+        "correct": true,
+        "reason": "Low noise matches real_noise_light."
+      },
+      {
+        "field": "signal_type",
+        "correct": false,
+        "reason": "Unknown does not match LFM."
+      },
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "Good condition is acceptable for direct."
+      }
+    ],
+    "expected_answer": "{\"noise_level\":\"real_noise_light\",\"signal_type\":\"LFM\",\"channel_condition\":\"direct\"}",
+    "response": "```json\n{\n  \"noise_level\": \"low\",\n  \"signal_type\": \"unknown\",\n  \"channel_condition\": \"good\"\n}\n```"
+  },
+  {
+    "id": "vlmft_002446_multi_field_open_json_0909",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "noise_level",
+      "main_frequency_hz"
+    ],
+    "field_count": 2,
+    "field_signature": "noise_level+main_frequency_hz",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "Expected real_noise_heavy; -60 is not semantically equivalent."
+      },
+      {
+        "field": "main_frequency_hz",
+        "correct": true,
+        "reason": "5800 Hz is close to expected 6000 Hz within reading tolerance."
+      }
+    ],
+    "expected_answer": "{\"noise_level\":\"real_noise_heavy\",\"main_frequency_hz\":\"6000 Hz\"}",
+    "response": "```json\n{\n  \"noise_level\": -60,\n  \"main_frequency_hz\": 5800\n}\n```"
+  },
+  {
+    "id": "vlmft_003919_multi_field_open_json_0337",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "noise_level",
+      "lfm_direction"
+    ],
+    "field_count": 2,
+    "field_signature": "noise_level+lfm_direction",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "Expected clean; low implies light noise, not clean."
+      },
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "Upward is equivalent to 升频."
+      }
+    ],
+    "expected_answer": "{\"noise_level\":\"clean\",\"lfm_direction\":\"升频\"}",
+    "response": "```json\n{\n  \"noise_level\": \"low\",\n  \"lfm_direction\": \"upward\"\n}\n```"
+  },
+  {
+    "id": "vlmft_002428_multi_field_open_json_0965",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "signal_type",
+      "fsk_order"
+    ],
+    "field_count": 2,
+    "field_signature": "signal_type+fsk_order",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": true,
+        "reason": "Matches FSK."
+      },
+      {
+        "field": "fsk_order",
+        "correct": true,
+        "reason": "2 is equivalent to 2FSK."
+      }
+    ],
+    "expected_answer": "{\"signal_type\":\"FSK\",\"fsk_order\":\"2FSK\"}",
+    "response": "```json\n{\n  \"signal_type\": \"FSK\",\n  \"fsk_order\": 2\n}\n```"
+  },
+  {
+    "id": "vlmft_000857_lfm_direction_open_short_1128",
+    "task": "lfm_direction_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "lfm_direction"
+    ],
+    "field_count": 1,
+    "field_signature": "lfm_direction",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "向下 is equivalent to 降频."
+      }
+    ],
+    "expected_answer": "降频",
+    "response": "向下"
+  },
+  {
+    "id": "vlmft_002197_fsk_order_open_short_1411",
+    "task": "fsk_order_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "fsk_order"
+    ],
+    "field_count": 1,
+    "field_signature": "fsk_order",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "fsk_order",
+        "correct": true,
+        "reason": "4 is equivalent to 4FSK."
+      }
+    ],
+    "expected_answer": "4FSK",
+    "response": "4"
+  },
+  {
+    "id": "vlmft_001716_multi_field_open_json_0447",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "noise_level",
+      "lfm_direction"
+    ],
+    "field_count": 2,
+    "field_signature": "noise_level+lfm_direction",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "Expected clean/no noise; 'low' indicates light noise."
+      },
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "Downward is equivalent to 降频."
+      }
+    ],
+    "expected_answer": "{\"noise_level\":\"clean\",\"lfm_direction\":\"降频\"}",
+    "response": "```json\n{\n  \"noise_level\": \"low\",\n  \"lfm_direction\": \"downward\"\n}\n```"
+  },
+  {
+    "id": "vlmft_000504_multi_field_open_json_0396",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "signal_type",
+      "channel_condition"
+    ],
+    "field_count": 2,
+    "field_signature": "signal_type+channel_condition",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": false,
+        "reason": "Expected BPSK; 'acoustic signal' is too generic."
+      },
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "正常 is acceptable for direct/normal channel."
+      }
+    ],
+    "expected_answer": "{\"signal_type\":\"BPSK\",\"channel_condition\":\"direct\"}",
+    "response": "```json\n{\n  \"signal_type\": \"声学信号\",\n  \"channel_condition\": \"正常\"\n}\n```"
+  },
+  {
+    "id": "vlmft_000942_lfm_direction_open_short_1092",
+    "task": "lfm_direction_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "lfm_direction"
+    ],
+    "field_count": 1,
+    "field_signature": "lfm_direction",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "上升 is equivalent to 升频."
+      }
+    ],
+    "expected_answer": "升频",
+    "response": "上升"
+  },
+  {
+    "id": "vlmft_001727_lfm_direction_open_short_1131",
+    "task": "lfm_direction_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "lfm_direction"
+    ],
+    "field_count": 1,
+    "field_signature": "lfm_direction",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "向下 is equivalent to 降频."
+      }
+    ],
+    "expected_answer": "降频",
+    "response": "向下"
+  },
+  {
+    "id": "vlmft_001137_multi_field_open_json_0227",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "signal_type",
+      "main_frequency_hz",
+      "channel_condition"
+    ],
+    "field_count": 3,
+    "field_signature": "signal_type+main_frequency_hz+channel_condition",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": true,
+        "reason": "Single-frequency is equivalent to CW."
+      },
+      {
+        "field": "main_frequency_hz",
+        "correct": true,
+        "reason": "Matches 2000 Hz."
+      },
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "Clear is acceptable for direct condition."
+      }
+    ],
+    "expected_answer": "{\"signal_type\":\"CW\",\"main_frequency_hz\":\"2000 Hz\",\"channel_condition\":\"direct\"}",
+    "response": "```json\n{\n  \"signal_type\": \"single-frequency\",\n  \"main_frequency_hz\": 2000,\n  \"channel_condition\": \"clear\"\n}\n```"
+  },
+  {
+    "id": "vlmft_003725_multi_field_open_json_0530",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "lfm_direction",
+      "signal_type"
+    ],
+    "field_count": 2,
+    "field_signature": "lfm_direction+signal_type",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "Upward is equivalent to 升频."
+      },
+      {
+        "field": "signal_type",
+        "correct": false,
+        "reason": "Expected LFM; answer is unknown."
+      }
+    ],
+    "expected_answer": "{\"lfm_direction\":\"升频\",\"signal_type\":\"LFM\"}",
+    "response": "```json\n{\n  \"lfm_direction\": \"upward\",\n  \"signal_type\": \"unknown\"\n}\n```"
+  },
+  {
+    "id": "vlmft_003591_multi_field_open_json_0356",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "channel_condition",
+      "noise_level"
+    ],
+    "field_count": 2,
+    "field_signature": "channel_condition+noise_level",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "Good is acceptable for a clear/direct channel."
+      },
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "Expected clean; low noise is not the same as no noise."
+      }
+    ],
+    "expected_answer": "{\"channel_condition\":\"direct\",\"noise_level\":\"clean\"}",
+    "response": "```json\n{\n  \"channel_condition\": \"Good\",\n  \"noise_level\": \"Low\"\n}\n```"
+  },
+  {
+    "id": "vlmft_000190_channel_condition_open_short_2052",
+    "task": "channel_condition_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "channel_condition"
+    ],
+    "field_count": 1,
+    "field_signature": "channel_condition",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "Multipath channel semantically matches Bellhop-processed channel."
+      }
+    ],
+    "expected_answer": "bellhop",
+    "response": "多径信道"
+  },
+  {
+    "id": "vlmft_001905_multi_field_open_json_0290",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "signal_type",
+      "channel_condition"
+    ],
+    "field_count": 2,
+    "field_signature": "signal_type+channel_condition",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": false,
+        "reason": "Generic acoustic signal does not specify FSK."
+      },
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "Normal can indicate an unimpaired/direct channel."
+      }
+    ],
+    "expected_answer": "{\"signal_type\":\"FSK\",\"channel_condition\":\"direct\"}",
+    "response": "```json\n{\n  \"signal_type\": \"声学信号\",\n  \"channel_condition\": \"正常\"\n}\n```"
+  },
+  {
+    "id": "vlmft_003442_signal_type_open_short_0125",
+    "task": "signal_type_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "signal_type"
+    ],
+    "field_count": 1,
+    "field_signature": "signal_type",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": true,
+        "reason": "Single-tone modulation is equivalent to CW/pure tone."
+      }
+    ],
+    "expected_answer": "CW",
+    "response": "单音调制"
+  },
+  {
+    "id": "vlmft_003657_multi_field_open_json_0281",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "noise_level",
+      "bpsk_symbol_rate",
+      "signal_type"
+    ],
+    "field_count": 3,
+    "field_signature": "noise_level+bpsk_symbol_rate+signal_type",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "Expected clean; numeric -60 is not the categorical noise level."
+      },
+      {
+        "field": "bpsk_symbol_rate",
+        "correct": false,
+        "reason": "Expected 40 symbol/s; answered 1250."
+      },
+      {
+        "field": "signal_type",
+        "correct": true,
+        "reason": "Answer matches BPSK."
+      }
+    ],
+    "expected_answer": "{\"noise_level\":\"clean\",\"bpsk_symbol_rate\":\"40 symbol/s\",\"signal_type\":\"BPSK\"}",
+    "response": "```json\n{\n  \"noise_level\": -60,\n  \"bpsk_symbol_rate\": 1250,\n  \"signal_type\": \"BPSK\"\n}\n```"
+  },
+  {
+    "id": "vlmft_000054_multi_field_open_json_0406",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "noise_level",
+      "fsk_order",
+      "signal_type"
+    ],
+    "field_count": 3,
+    "field_signature": "noise_level+fsk_order+signal_type",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "Expected clean; numeric -60 is not the categorical noise level."
+      },
+      {
+        "field": "fsk_order",
+        "correct": false,
+        "reason": "Expected 4FSK; answered 2."
+      },
+      {
+        "field": "signal_type",
+        "correct": true,
+        "reason": "Answer matches FSK."
+      }
+    ],
+    "expected_answer": "{\"noise_level\":\"clean\",\"fsk_order\":\"4FSK\",\"signal_type\":\"FSK\"}",
+    "response": "```json\n{\n  \"noise_level\": -60,\n  \"fsk_order\": 2,\n  \"signal_type\": \"FSK\"\n}\n```"
+  },
+  {
+    "id": "vlmft_003286_multi_field_open_json_1124",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "signal_type",
+      "noise_level"
+    ],
+    "field_count": 2,
+    "field_signature": "signal_type+noise_level",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": false,
+        "reason": "Answered unknown, expected CW."
+      },
+      {
+        "field": "noise_level",
+        "correct": true,
+        "reason": "High noise matches heavy noise."
+      }
+    ],
+    "expected_answer": "{\"signal_type\":\"CW\",\"noise_level\":\"real_noise_heavy\"}",
+    "response": "```json\n{\n  \"signal_type\": \"unknown\",\n  \"noise_level\": \"high\"\n}\n```"
+  },
+  {
+    "id": "vlmft_001492_lfm_direction_open_short_1059",
+    "task": "lfm_direction_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "lfm_direction"
+    ],
+    "field_count": 1,
+    "field_signature": "lfm_direction",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "Upward matches up-sweep/升频."
+      }
+    ],
+    "expected_answer": "升频",
+    "response": "向上"
+  },
+  {
+    "id": "vlmft_003276_multi_field_open_json_0878",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "fsk_order",
+      "signal_type"
+    ],
+    "field_count": 2,
+    "field_signature": "fsk_order+signal_type",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "fsk_order",
+        "correct": false,
+        "reason": "Answered 2, expected 4FSK."
+      },
+      {
+        "field": "signal_type",
+        "correct": true,
+        "reason": "Matches FSK."
+      }
+    ],
+    "expected_answer": "{\"fsk_order\":\"4FSK\",\"signal_type\":\"FSK\"}",
+    "response": "```json\n{\n  \"fsk_order\": 2,\n  \"signal_type\": \"FSK\"\n}\n```"
+  },
+  {
+    "id": "vlmft_002996_fsk_order_open_short_1404",
+    "task": "fsk_order_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "fsk_order"
+    ],
+    "field_count": 1,
+    "field_signature": "fsk_order",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "fsk_order",
+        "correct": true,
+        "reason": "4 is equivalent to 4FSK."
+      }
+    ],
+    "expected_answer": "4FSK",
+    "response": "4"
+  },
+  {
+    "id": "vlmft_002395_signal_type_open_short_0080",
+    "task": "signal_type_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "signal_type"
+    ],
+    "field_count": 1,
+    "field_signature": "signal_type",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": true,
+        "reason": "Single-tone is equivalent to CW."
+      }
+    ],
+    "expected_answer": "CW",
+    "response": "单音调制"
+  },
+  {
+    "id": "vlmft_002155_multi_field_open_json_0012",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "channel_condition",
+      "signal_type",
+      "noise_level"
+    ],
+    "field_count": 3,
+    "field_signature": "channel_condition+signal_type+noise_level",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "channel_condition",
+        "correct": false,
+        "reason": "Answered unknown, not direct."
+      },
+      {
+        "field": "signal_type",
+        "correct": true,
+        "reason": "Single-frequency tone is equivalent to CW."
+      },
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "Low noise is not clean."
+      }
+    ],
+    "expected_answer": "{\"channel_condition\":\"direct\",\"signal_type\":\"CW\",\"noise_level\":\"clean\"}",
+    "response": "```json\n{\n  \"channel_condition\": \"unknown\",\n  \"signal_type\": \"single-frequency tone\",\n  \"noise_level\": \"low\"\n}\n```"
+  },
+  {
+    "id": "vlmft_002643_multi_field_open_json_0203",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "signal_type",
+      "noise_level",
+      "channel_condition"
+    ],
+    "field_count": 3,
+    "field_signature": "signal_type+noise_level+channel_condition",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": false,
+        "reason": "Unknown is not BPSK."
+      },
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "Low noise is not clean."
+      },
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "Good can describe direct/clear channel."
+      }
+    ],
+    "expected_answer": "{\"signal_type\":\"BPSK\",\"noise_level\":\"clean\",\"channel_condition\":\"direct\"}",
+    "response": "```json\n{\n  \"signal_type\": \"unknown\",\n  \"noise_level\": \"low\",\n  \"channel_condition\": \"good\"\n}\n```"
+  },
+  {
+    "id": "vlmft_003133_lfm_direction_open_short_1150",
+    "task": "lfm_direction_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "lfm_direction"
+    ],
+    "field_count": 1,
+    "field_signature": "lfm_direction",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "Downward matches descending frequency."
+      }
+    ],
+    "expected_answer": "降频",
+    "response": "向下"
+  },
+  {
+    "id": "vlmft_000556_fsk_order_open_short_1271",
+    "task": "fsk_order_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "fsk_order"
+    ],
+    "field_count": 1,
+    "field_signature": "fsk_order",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "fsk_order",
+        "correct": true,
+        "reason": "2 is equivalent to 2FSK."
+      }
+    ],
+    "expected_answer": "2FSK",
+    "response": "2"
+  },
+  {
+    "id": "vlmft_000056_fsk_order_open_short_1383",
+    "task": "fsk_order_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "fsk_order"
+    ],
+    "field_count": 1,
+    "field_signature": "fsk_order",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "fsk_order",
+        "correct": true,
+        "reason": "4 is equivalent to 4FSK."
+      }
+    ],
+    "expected_answer": "4FSK",
+    "response": "4"
+  },
+  {
+    "id": "vlmft_003131_multi_field_open_json_0540",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "signal_type",
+      "channel_condition"
+    ],
+    "field_count": 2,
+    "field_signature": "signal_type+channel_condition",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": false,
+        "reason": "Generic acoustic signal is not LFM."
+      },
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "正常 can describe a normal/direct channel."
+      }
+    ],
+    "expected_answer": "{\"signal_type\":\"LFM\",\"channel_condition\":\"direct\"}",
+    "response": "```json\n{\n  \"signal_type\": \"声学信号\",\n  \"channel_condition\": \"正常\"\n}\n```"
+  },
+  {
+    "id": "vlmft_001488_signal_type_open_short_0167",
+    "task": "signal_type_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "signal_type"
+    ],
+    "field_count": 1,
+    "field_signature": "signal_type",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": true,
+        "reason": "调频信号 is acceptable for LFM in this context."
+      }
+    ],
+    "expected_answer": "LFM",
+    "response": "调频信号"
+  },
+  {
+    "id": "vlmft_003155_multi_field_open_json_0388",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "signal_type",
+      "main_frequency_hz",
+      "channel_condition"
+    ],
+    "field_count": 3,
+    "field_signature": "signal_type+main_frequency_hz+channel_condition",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": false,
+        "reason": "Generic acoustic signal is not CW."
+      },
+      {
+        "field": "main_frequency_hz",
+        "correct": true,
+        "reason": "Matches 6000 Hz."
+      },
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "“Good” is acceptable for direct/clear channel."
+      }
+    ],
+    "expected_answer": "{\"signal_type\":\"CW\",\"main_frequency_hz\":\"6000 Hz\",\"channel_condition\":\"direct\"}",
+    "response": "```json\n{\n  \"signal_type\": \"声学信号\",\n  \"main_frequency_hz\": 6000,\n  \"channel_condition\": \"良好\"\n}\n```"
+  },
+  {
+    "id": "vlmft_002855_lfm_direction_open_short_1199",
+    "task": "lfm_direction_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "lfm_direction"
+    ],
+    "field_count": 1,
+    "field_signature": "lfm_direction",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "Downward matches decreasing sweep."
+      }
+    ],
+    "expected_answer": "降频",
+    "response": "向下"
+  },
+  {
+    "id": "vlmft_002376_fsk_order_open_short_1223",
+    "task": "fsk_order_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "fsk_order"
+    ],
+    "field_count": 1,
+    "field_signature": "fsk_order",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "fsk_order",
+        "correct": true,
+        "reason": "2 is equivalent to 2FSK."
+      }
+    ],
+    "expected_answer": "2FSK",
+    "response": "2"
+  },
+  {
+    "id": "vlmft_002091_multi_field_open_json_0087",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "signal_type",
+      "noise_level",
+      "main_frequency_hz"
+    ],
+    "field_count": 3,
+    "field_signature": "signal_type+noise_level+main_frequency_hz",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": true,
+        "reason": "Pure tone is equivalent to CW."
+      },
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "Expected clean/no noise, answered low noise."
+      },
+      {
+        "field": "main_frequency_hz",
+        "correct": true,
+        "reason": "Matches 4000 Hz."
+      }
+    ],
+    "expected_answer": "{\"signal_type\":\"CW\",\"noise_level\":\"clean\",\"main_frequency_hz\":\"4000 Hz\"}",
+    "response": "```json\n{\n  \"signal_type\": \"pure tone\",\n  \"noise_level\": \"low\",\n  \"main_frequency_hz\": 4000\n}\n```"
+  },
+  {
+    "id": "vlmft_001003_multi_field_open_json_0613",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "fsk_order",
+      "noise_level"
+    ],
+    "field_count": 2,
+    "field_signature": "fsk_order+noise_level",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "fsk_order",
+        "correct": true,
+        "reason": "2 is equivalent to 2FSK."
+      },
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "-60 is not semantically clean."
+      }
+    ],
+    "expected_answer": "{\"fsk_order\":\"2FSK\",\"noise_level\":\"clean\"}",
+    "response": "```json\n{\n  \"fsk_order\": 2,\n  \"noise_level\": -60\n}\n```"
+  },
+  {
+    "id": "vlmft_002862_fsk_order_open_short_1268",
+    "task": "fsk_order_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "fsk_order"
+    ],
+    "field_count": 1,
+    "field_signature": "fsk_order",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "fsk_order",
+        "correct": true,
+        "reason": "2 is equivalent to 2FSK."
+      }
+    ],
+    "expected_answer": "2FSK",
+    "response": "2"
+  },
+  {
+    "id": "vlmft_000002_fsk_order_open_short_1351",
+    "task": "fsk_order_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "fsk_order"
+    ],
+    "field_count": 1,
+    "field_signature": "fsk_order",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "fsk_order",
+        "correct": true,
+        "reason": "4 is equivalent to 4FSK."
+      }
+    ],
+    "expected_answer": "4FSK",
+    "response": "4"
+  },
+  {
+    "id": "vlmft_001586_multi_field_open_json_0608",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "signal_type",
+      "channel_condition"
+    ],
+    "field_count": 2,
+    "field_signature": "signal_type+channel_condition",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": false,
+        "reason": "Generic acoustic signal is not LFM."
+      },
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "“正常” is acceptable for direct/normal channel."
+      }
+    ],
+    "expected_answer": "{\"signal_type\":\"LFM\",\"channel_condition\":\"direct\"}",
+    "response": "```json\n{\n  \"signal_type\": \"声学信号\",\n  \"channel_condition\": \"正常\"\n}\n```"
+  },
+  {
+    "id": "vlmft_000272_multi_field_open_json_1005",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "channel_condition",
+      "lfm_direction"
+    ],
+    "field_count": 2,
+    "field_signature": "channel_condition+lfm_direction",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "“good” is acceptable for direct channel."
+      },
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "Downward equals 降频."
+      }
+    ],
+    "expected_answer": "{\"channel_condition\":\"direct\",\"lfm_direction\":\"降频\"}",
+    "response": "```json\n{\n  \"channel_condition\": \"good\",\n  \"lfm_direction\": \"downward\"\n}\n```"
+  },
+  {
+    "id": "vlmft_001615_multi_field_open_json_0420",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "noise_level",
+      "fsk_order"
+    ],
+    "field_count": 2,
+    "field_signature": "noise_level+fsk_order",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "-80 is not semantically clean."
+      },
+      {
+        "field": "fsk_order",
+        "correct": true,
+        "reason": "2 is equivalent to 2FSK."
+      }
+    ],
+    "expected_answer": "{\"noise_level\":\"clean\",\"fsk_order\":\"2FSK\"}",
+    "response": "```json\n{\n  \"noise_level\": -80,\n  \"fsk_order\": 2\n}\n```"
+  },
+  {
+    "id": "vlmft_000604_multi_field_open_json_0050",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "signal_type",
+      "lfm_direction"
+    ],
+    "field_count": 2,
+    "field_signature": "signal_type+lfm_direction",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": false,
+        "reason": "Answered unknown, expected LFM."
+      },
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "Down equals 降频."
+      }
+    ],
+    "expected_answer": "{\"signal_type\":\"LFM\",\"lfm_direction\":\"降频\"}",
+    "response": "```json\n{\n  \"signal_type\": \"unknown\",\n  \"lfm_direction\": \"down\"\n}\n```"
+  },
+  {
+    "id": "vlmft_003701_multi_field_open_json_0685",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "channel_condition",
+      "noise_level"
+    ],
+    "field_count": 2,
+    "field_signature": "channel_condition+noise_level",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "“Good” can describe a clear/direct channel."
+      },
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "Expected clean/no noise; “Low” indicates low noise."
+      }
+    ],
+    "expected_answer": "{\"channel_condition\":\"direct\",\"noise_level\":\"clean\"}",
+    "response": "```json\n{\n  \"channel_condition\": \"Good\",\n  \"noise_level\": \"Low\"\n}\n```"
+  },
+  {
+    "id": "vlmft_000879_multi_field_open_json_0490",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "channel_condition",
+      "noise_level",
+      "lfm_direction"
+    ],
+    "field_count": 3,
+    "field_signature": "channel_condition+noise_level+lfm_direction",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "channel_condition",
+        "correct": false,
+        "reason": "Expected direct, but response says unknown."
+      },
+      {
+        "field": "noise_level",
+        "correct": true,
+        "reason": "“low” matches real_noise_light/light noise."
+      },
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "“upward” matches 升频/up-sweep."
+      }
+    ],
+    "expected_answer": "{\"channel_condition\":\"direct\",\"noise_level\":\"real_noise_light\",\"lfm_direction\":\"升频\"}",
+    "response": "```json\n{\n  \"channel_condition\": \"unknown\",\n  \"noise_level\": \"low\",\n  \"lfm_direction\": \"upward\"\n}\n```"
+  },
+  {
+    "id": "vlmft_002532_signal_type_open_short_0020",
+    "task": "signal_type_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "signal_type"
+    ],
+    "field_count": 1,
+    "field_signature": "signal_type",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": true,
+        "reason": "单音调制 means single-tone/pure tone, equivalent to CW."
+      }
+    ],
+    "expected_answer": "CW",
+    "response": "单音调制"
+  },
+  {
+    "id": "vlmft_002085_multi_field_open_json_0245",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "signal_type",
+      "noise_level",
+      "main_frequency_hz"
+    ],
+    "field_count": 3,
+    "field_signature": "signal_type+noise_level+main_frequency_hz",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": true,
+        "reason": "pure tone is equivalent to CW."
+      },
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "Expected clean/no noise; low indicates light noise."
+      },
+      {
+        "field": "main_frequency_hz",
+        "correct": true,
+        "reason": "Matches 6000 Hz."
+      }
+    ],
+    "expected_answer": "{\"signal_type\":\"CW\",\"noise_level\":\"clean\",\"main_frequency_hz\":\"6000 Hz\"}",
+    "response": "```json\n{\n  \"signal_type\": \"pure tone\",\n  \"noise_level\": \"low\",\n  \"main_frequency_hz\": 6000\n}\n```"
+  },
+  {
+    "id": "vlmft_000116_multi_field_open_json_0376",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "lfm_direction",
+      "noise_level"
+    ],
+    "field_count": 2,
+    "field_signature": "lfm_direction+noise_level",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "Upward means升频."
+      },
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "Expected clean, but answered low noise."
+      }
+    ],
+    "expected_answer": "{\"lfm_direction\":\"升频\",\"noise_level\":\"clean\"}",
+    "response": "```json\n{\n  \"lfm_direction\": \"upward\",\n  \"noise_level\": \"low\"\n}\n```"
+  },
+  {
+    "id": "vlmft_001586_multi_field_open_json_0936",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "signal_type",
+      "lfm_direction"
+    ],
+    "field_count": 2,
+    "field_signature": "signal_type+lfm_direction",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": false,
+        "reason": "Expected LFM, got unknown."
+      },
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "Up means升频."
+      }
+    ],
+    "expected_answer": "{\"signal_type\":\"LFM\",\"lfm_direction\":\"升频\"}",
+    "response": "```json\n{\n  \"signal_type\": \"unknown\",\n  \"lfm_direction\": \"up\"\n}\n```"
+  },
+  {
+    "id": "vlmft_002262_fsk_order_open_short_1237",
+    "task": "fsk_order_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "fsk_order"
+    ],
+    "field_count": 1,
+    "field_signature": "fsk_order",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "fsk_order",
+        "correct": true,
+        "reason": "2 is equivalent to 2FSK."
+      }
+    ],
+    "expected_answer": "2FSK",
+    "response": "2"
+  },
+  {
+    "id": "vlmft_001389_multi_field_open_json_1174",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "lfm_direction",
+      "noise_level"
+    ],
+    "field_count": 2,
+    "field_signature": "lfm_direction+noise_level",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "Downward means descending/降频."
+      },
+      {
+        "field": "noise_level",
+        "correct": true,
+        "reason": "High noise is equivalent to heavy noise."
+      }
+    ],
+    "expected_answer": "{\"lfm_direction\":\"降频\",\"noise_level\":\"real_noise_heavy\"}",
+    "response": "```json\n{\n  \"lfm_direction\": \"downward\",\n  \"noise_level\": \"high\"\n}\n```"
+  },
+  {
+    "id": "vlmft_000299_lfm_direction_open_short_1135",
+    "task": "lfm_direction_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "lfm_direction"
+    ],
+    "field_count": 1,
+    "field_signature": "lfm_direction",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "向下 means down-sweep/降频."
+      }
+    ],
+    "expected_answer": "降频",
+    "response": "向下"
+  },
+  {
+    "id": "vlmft_001535_lfm_direction_open_short_1184",
+    "task": "lfm_direction_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "lfm_direction"
+    ],
+    "field_count": 1,
+    "field_signature": "lfm_direction",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "向下 means down-sweep/降频."
+      }
+    ],
+    "expected_answer": "降频",
+    "response": "向下"
+  },
+  {
+    "id": "vlmft_002767_signal_type_open_short_0018",
+    "task": "signal_type_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "signal_type"
+    ],
+    "field_count": 1,
+    "field_signature": "signal_type",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": true,
+        "reason": "Single-tone modulation is equivalent to CW/pure tone."
+      }
+    ],
+    "expected_answer": "CW",
+    "response": "单音调制"
+  },
+  {
+    "id": "vlmft_001292_multi_field_open_json_0418",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "noise_level",
+      "signal_type",
+      "channel_condition"
+    ],
+    "field_count": 3,
+    "field_signature": "noise_level+signal_type+channel_condition",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "Expected clean; low suggests light noise, not clean."
+      },
+      {
+        "field": "signal_type",
+        "correct": false,
+        "reason": "Audio is not equivalent to LFM."
+      },
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "Good channel is acceptable for direct/clear condition."
+      }
+    ],
+    "expected_answer": "{\"noise_level\":\"clean\",\"signal_type\":\"LFM\",\"channel_condition\":\"direct\"}",
+    "response": "```json\n{\n  \"noise_level\": \"low\",\n  \"signal_type\": \"audio\",\n  \"channel_condition\": \"good\"\n}\n```"
+  },
+  {
+    "id": "vlmft_002819_fsk_order_open_short_1213",
+    "task": "fsk_order_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "fsk_order"
+    ],
+    "field_count": 1,
+    "field_signature": "fsk_order",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "fsk_order",
+        "correct": true,
+        "reason": "2 is equivalent to 2FSK."
+      }
+    ],
+    "expected_answer": "2FSK",
+    "response": "2"
+  },
+  {
+    "id": "vlmft_002046_lfm_direction_open_short_0995",
+    "task": "lfm_direction_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "lfm_direction"
+    ],
+    "field_count": 1,
+    "field_signature": "lfm_direction",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "向上 is equivalent to up-sweep/升频."
+      }
+    ],
+    "expected_answer": "升频",
+    "response": "向上"
+  },
+  {
+    "id": "vlmft_003328_lfm_direction_open_short_1013",
+    "task": "lfm_direction_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "lfm_direction"
+    ],
+    "field_count": 1,
+    "field_signature": "lfm_direction",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "Upward/上升 matches 升频."
+      }
+    ],
+    "expected_answer": "升频",
+    "response": "上升"
+  },
+  {
+    "id": "vlmft_000455_multi_field_open_json_0084",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "main_frequency_hz",
+      "noise_level",
+      "channel_condition"
+    ],
+    "field_count": 3,
+    "field_signature": "main_frequency_hz+noise_level+channel_condition",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "main_frequency_hz",
+        "correct": true,
+        "reason": "2000 is equivalent to 2000 Hz."
+      },
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "-80 is not equivalent to clean."
+      },
+      {
+        "field": "channel_condition",
+        "correct": false,
+        "reason": "Good/clear is not equivalent to bellhop channel."
+      }
+    ],
+    "expected_answer": "{\"main_frequency_hz\":\"2000 Hz\",\"noise_level\":\"clean\",\"channel_condition\":\"bellhop\"}",
+    "response": "```json\n{\n  \"main_frequency_hz\": 2000,\n  \"noise_level\": -80,\n  \"channel_condition\": \"good\"\n}\n```"
+  },
+  {
+    "id": "vlmft_002322_multi_field_open_json_1196",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "noise_level",
+      "channel_condition"
+    ],
+    "field_count": 2,
+    "field_signature": "noise_level+channel_condition",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "Expected clean; -60 is not the category."
+      },
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "Good/clear channel is acceptable for direct."
+      }
+    ],
+    "expected_answer": "{\"noise_level\":\"clean\",\"channel_condition\":\"direct\"}",
+    "response": "```json\n{\n  \"noise_level\": -60,\n  \"channel_condition\": \"good\"\n}\n```"
+  },
+  {
+    "id": "vlmft_000020_multi_field_open_json_0081",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "signal_type",
+      "noise_level",
+      "channel_condition"
+    ],
+    "field_count": 3,
+    "field_signature": "signal_type+noise_level+channel_condition",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": false,
+        "reason": "Expected BPSK, answered speech."
+      },
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "Expected heavy real noise, answered low."
+      },
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "Good channel is acceptable for direct."
+      }
+    ],
+    "expected_answer": "{\"signal_type\":\"BPSK\",\"noise_level\":\"real_noise_heavy\",\"channel_condition\":\"direct\"}",
+    "response": "```json\n{\n  \"signal_type\": \"speech\",\n  \"noise_level\": \"low\",\n  \"channel_condition\": \"good\"\n}\n```"
+  },
+  {
+    "id": "vlmft_002587_lfm_direction_open_short_1139",
+    "task": "lfm_direction_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "lfm_direction"
+    ],
+    "field_count": 1,
+    "field_signature": "lfm_direction",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "Downward means down-sweep."
+      }
+    ],
+    "expected_answer": "降频",
+    "response": "向下"
+  },
+  {
+    "id": "vlmft_000988_signal_type_open_short_0146",
+    "task": "signal_type_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "signal_type"
+    ],
+    "field_count": 1,
+    "field_signature": "signal_type",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": true,
+        "reason": "Frequency-modulated signal is acceptable for LFM."
+      }
+    ],
+    "expected_answer": "LFM",
+    "response": "调频信号"
+  },
+  {
+    "id": "vlmft_003507_lfm_direction_open_short_1084",
+    "task": "lfm_direction_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "lfm_direction"
+    ],
+    "field_count": 1,
+    "field_signature": "lfm_direction",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "“向上”表示升频/上扫。"
+      }
+    ],
+    "expected_answer": "升频",
+    "response": "向上"
+  },
+  {
+    "id": "vlmft_001058_multi_field_open_json_0336",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "noise_level",
+      "channel_condition"
+    ],
+    "field_count": 2,
+    "field_signature": "noise_level+channel_condition",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "-80 不是明确的 clean 类别。"
+      },
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "Good 可视为直达/良好信道。"
+      }
+    ],
+    "expected_answer": "{\"noise_level\":\"clean\",\"channel_condition\":\"direct\"}",
+    "response": "```json\n{\n  \"noise_level\": -80,\n  \"channel_condition\": \"Good\"\n}\n```"
+  },
+  {
+    "id": "vlmft_001460_multi_field_open_json_0155",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "main_frequency_hz",
+      "signal_type",
+      "noise_level"
+    ],
+    "field_count": 3,
+    "field_signature": "main_frequency_hz+signal_type+noise_level",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "main_frequency_hz",
+        "correct": true,
+        "reason": "1000 与 1000 Hz 一致。"
+      },
+      {
+        "field": "signal_type",
+        "correct": true,
+        "reason": "纯音等同于 CW。"
+      },
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "-80 不等同于 clean。"
+      }
+    ],
+    "expected_answer": "{\"main_frequency_hz\":\"1000 Hz\",\"signal_type\":\"CW\",\"noise_level\":\"clean\"}",
+    "response": "```json\n{\n  \"main_frequency_hz\": 1000,\n  \"signal_type\": \"纯音\",\n  \"noise_level\": -80\n}\n```"
+  },
+  {
+    "id": "vlmft_002450_fsk_order_open_short_1400",
+    "task": "fsk_order_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "fsk_order"
+    ],
+    "field_count": 1,
+    "field_signature": "fsk_order",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "fsk_order",
+        "correct": true,
+        "reason": "4 等同于 4FSK。"
+      }
+    ],
+    "expected_answer": "4FSK",
+    "response": "4"
+  },
+  {
+    "id": "vlmft_001552_multi_field_open_json_1083",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "channel_condition",
+      "signal_type"
+    ],
+    "field_count": 2,
+    "field_signature": "channel_condition+signal_type",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "channel_condition",
+        "correct": false,
+        "reason": "Expected direct; 'single' is not a clear synonym."
+      },
+      {
+        "field": "signal_type",
+        "correct": true,
+        "reason": "Pure tone is equivalent to CW."
+      }
+    ],
+    "expected_answer": "{\"channel_condition\":\"direct\",\"signal_type\":\"CW\"}",
+    "response": "```json\n{\n  \"channel_condition\": \"single\",\n  \"signal_type\": \"pure tone\"\n}\n```"
+  },
+  {
+    "id": "vlmft_000656_fsk_order_open_short_1338",
+    "task": "fsk_order_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "fsk_order"
+    ],
+    "field_count": 1,
+    "field_signature": "fsk_order",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "fsk_order",
+        "correct": true,
+        "reason": "4 is equivalent to 4FSK."
+      }
+    ],
+    "expected_answer": "4FSK",
+    "response": "4"
+  },
+  {
+    "id": "vlmft_002831_multi_field_open_json_0414",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "noise_level",
+      "channel_condition"
+    ],
+    "field_count": 2,
+    "field_signature": "noise_level+channel_condition",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "Expected clean; '-60' is not the clean category."
+      },
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "Good is accepted as a synonym for direct/clear condition."
+      }
+    ],
+    "expected_answer": "{\"noise_level\":\"clean\",\"channel_condition\":\"direct\"}",
+    "response": "```json\n{\n  \"noise_level\": -60,\n  \"channel_condition\": \"Good\"\n}\n```"
+  },
+  {
+    "id": "vlmft_000500_fsk_order_open_short_1363",
+    "task": "fsk_order_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "fsk_order"
+    ],
+    "field_count": 1,
+    "field_signature": "fsk_order",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "fsk_order",
+        "correct": true,
+        "reason": "4 is equivalent to 4FSK."
+      }
+    ],
+    "expected_answer": "4FSK",
+    "response": "4"
+  },
+  {
+    "id": "vlmft_000119_multi_field_open_json_0864",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "lfm_direction",
+      "channel_condition"
+    ],
+    "field_count": 2,
+    "field_signature": "lfm_direction+channel_condition",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "Downward is equivalent to 降频."
+      },
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "Good is acceptable for direct/clear channel."
+      }
+    ],
+    "expected_answer": "{\"lfm_direction\":\"降频\",\"channel_condition\":\"direct\"}",
+    "response": "```json\n{\n  \"lfm_direction\": \"downward\",\n  \"channel_condition\": \"good\"\n}\n```"
+  },
+  {
+    "id": "vlmft_002428_multi_field_open_json_0313",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "signal_type",
+      "channel_condition"
+    ],
+    "field_count": 2,
+    "field_signature": "signal_type+channel_condition",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": false,
+        "reason": "Expected FSK, answered generic acoustic signal."
+      },
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "正常 is acceptable for direct/normal channel."
+      }
+    ],
+    "expected_answer": "{\"signal_type\":\"FSK\",\"channel_condition\":\"direct\"}",
+    "response": "```json\n{\n  \"signal_type\": \"声学信号\",\n  \"channel_condition\": \"正常\"\n}\n```"
+  },
+  {
+    "id": "vlmft_000026_multi_field_open_json_0172",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "noise_level",
+      "signal_type",
+      "main_frequency_hz"
+    ],
+    "field_count": 3,
+    "field_signature": "noise_level+signal_type+main_frequency_hz",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "Expected light real noise, numeric -60 is not equivalent."
+      },
+      {
+        "field": "signal_type",
+        "correct": false,
+        "reason": "Expected CW, answered unknown."
+      },
+      {
+        "field": "main_frequency_hz",
+        "correct": true,
+        "reason": "500 matches 500 Hz."
+      }
+    ],
+    "expected_answer": "{\"noise_level\":\"real_noise_light\",\"signal_type\":\"CW\",\"main_frequency_hz\":\"500 Hz\"}",
+    "response": "```json\n{\n  \"noise_level\": -60,\n  \"signal_type\": \"unknown\",\n  \"main_frequency_hz\": 500\n}\n```"
+  },
+  {
+    "id": "vlmft_002110_multi_field_open_json_0111",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "signal_type",
+      "lfm_direction"
+    ],
+    "field_count": 2,
+    "field_signature": "signal_type+lfm_direction",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "signal_type",
+        "correct": false,
+        "reason": "Expected LFM, answered unknown."
+      },
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "Up is equivalent to 升频."
+      }
+    ],
+    "expected_answer": "{\"signal_type\":\"LFM\",\"lfm_direction\":\"升频\"}",
+    "response": "```json\n{\n  \"signal_type\": \"unknown\",\n  \"lfm_direction\": \"up\"\n}\n```"
+  },
+  {
+    "id": "vlmft_003399_multi_field_open_json_1153",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "noise_level",
+      "main_frequency_hz"
+    ],
+    "field_count": 2,
+    "field_signature": "noise_level+main_frequency_hz",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "Expected clean, but -80 is not the clean category."
+      },
+      {
+        "field": "main_frequency_hz",
+        "correct": true,
+        "reason": "4000 matches 4000 Hz."
+      }
+    ],
+    "expected_answer": "{\"noise_level\":\"clean\",\"main_frequency_hz\":\"4000 Hz\"}",
+    "response": "```json\n{\n  \"noise_level\": -80,\n  \"main_frequency_hz\": 4000\n}\n```"
+  },
+  {
+    "id": "vlmft_001167_channel_condition_open_short_2092",
+    "task": "channel_condition_open_short",
+    "answer_format": "open_short",
+    "fields": [
+      "channel_condition"
+    ],
+    "field_count": 1,
+    "field_signature": "channel_condition",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "Multipath propagation describes the Bellhop channel condition."
+      }
+    ],
+    "expected_answer": "bellhop",
+    "response": "多径传播"
+  },
+  {
+    "id": "vlmft_000640_multi_field_open_json_0020",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "noise_level",
+      "lfm_direction"
+    ],
+    "field_count": 2,
+    "field_signature": "noise_level+lfm_direction",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "noise_level",
+        "correct": false,
+        "reason": "Expected clean/no noise, but low noise is not equivalent."
+      },
+      {
+        "field": "lfm_direction",
+        "correct": true,
+        "reason": "Downward is equivalent to 降频."
+      }
+    ],
+    "expected_answer": "{\"noise_level\":\"clean\",\"lfm_direction\":\"降频\"}",
+    "response": "```json\n{\n  \"noise_level\": \"low\",\n  \"lfm_direction\": \"downward\"\n}\n```"
+  }
+]

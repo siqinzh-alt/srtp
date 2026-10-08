@@ -1,0 +1,1924 @@
+{
+  "answer_format:choice": {
+    "samples": 156,
+    "hard": {
+      "correct": 74,
+      "total": 156,
+      "accuracy": 0.474359
+    },
+    "strict": {
+      "correct": 74,
+      "total": 156,
+      "accuracy": 0.474359
+    },
+    "mean": {
+      "correct": 74,
+      "total": 156,
+      "accuracy": 0.474359
+    }
+  },
+  "answer_format:open_json": {
+    "samples": 226,
+    "hard": {
+      "correct": 0,
+      "total": 226,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 11,
+      "total": 226,
+      "accuracy": 0.048673
+    },
+    "mean": {
+      "correct": 108,
+      "total": 509,
+      "accuracy": 0.212181
+    }
+  },
+  "answer_format:open_short": {
+    "samples": 257,
+    "hard": {
+      "correct": 48,
+      "total": 257,
+      "accuracy": 0.18677
+    },
+    "strict": {
+      "correct": 103,
+      "total": 257,
+      "accuracy": 0.400778
+    },
+    "mean": {
+      "correct": 103,
+      "total": 257,
+      "accuracy": 0.400778
+    }
+  },
+  "field_count:1": {
+    "samples": 413,
+    "hard": {
+      "correct": 122,
+      "total": 413,
+      "accuracy": 0.2954
+    },
+    "strict": {
+      "correct": 177,
+      "total": 413,
+      "accuracy": 0.428571
+    },
+    "mean": {
+      "correct": 177,
+      "total": 413,
+      "accuracy": 0.428571
+    }
+  },
+  "field_count:2": {
+    "samples": 169,
+    "hard": {
+      "correct": 0,
+      "total": 169,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 9,
+      "total": 169,
+      "accuracy": 0.053254
+    },
+    "mean": {
+      "correct": 64,
+      "total": 338,
+      "accuracy": 0.189349
+    }
+  },
+  "field_count:3": {
+    "samples": 57,
+    "hard": {
+      "correct": 0,
+      "total": 57,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 2,
+      "total": 57,
+      "accuracy": 0.035088
+    },
+    "mean": {
+      "correct": 44,
+      "total": 171,
+      "accuracy": 0.25731
+    }
+  },
+  "fields:bio_call_description": {
+    "samples": 5,
+    "hard": {
+      "correct": 0,
+      "total": 5,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 5,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 5,
+      "accuracy": 0.0
+    }
+  },
+  "fields:bio_call_description+bio_species_code": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    }
+  },
+  "fields:bio_call_description+bio_species_code+bio_species_or_group": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    }
+  },
+  "fields:bio_call_description+bio_species_or_group": {
+    "samples": 3,
+    "hard": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 6,
+      "accuracy": 0.0
+    }
+  },
+  "fields:bio_call_description+bio_species_or_group+bio_species_code": {
+    "samples": 2,
+    "hard": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 6,
+      "accuracy": 0.0
+    }
+  },
+  "fields:bio_species_code": {
+    "samples": 19,
+    "hard": {
+      "correct": 1,
+      "total": 19,
+      "accuracy": 0.052632
+    },
+    "strict": {
+      "correct": 1,
+      "total": 19,
+      "accuracy": 0.052632
+    },
+    "mean": {
+      "correct": 1,
+      "total": 19,
+      "accuracy": 0.052632
+    }
+  },
+  "fields:bio_species_code+bio_call_description": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    }
+  },
+  "fields:bio_species_code+bio_species_or_group": {
+    "samples": 8,
+    "hard": {
+      "correct": 0,
+      "total": 8,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 8,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 16,
+      "accuracy": 0.0
+    }
+  },
+  "fields:bio_species_code+bio_species_or_group+bio_call_description": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    }
+  },
+  "fields:bio_species_or_group": {
+    "samples": 65,
+    "hard": {
+      "correct": 5,
+      "total": 65,
+      "accuracy": 0.076923
+    },
+    "strict": {
+      "correct": 5,
+      "total": 65,
+      "accuracy": 0.076923
+    },
+    "mean": {
+      "correct": 5,
+      "total": 65,
+      "accuracy": 0.076923
+    }
+  },
+  "fields:bio_species_or_group+bio_call_description": {
+    "samples": 9,
+    "hard": {
+      "correct": 0,
+      "total": 9,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 9,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 18,
+      "accuracy": 0.0
+    }
+  },
+  "fields:bio_species_or_group+bio_call_description+bio_species_code": {
+    "samples": 2,
+    "hard": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 6,
+      "accuracy": 0.0
+    }
+  },
+  "fields:bio_species_or_group+bio_species_code": {
+    "samples": 18,
+    "hard": {
+      "correct": 0,
+      "total": 18,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 18,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 36,
+      "accuracy": 0.0
+    }
+  },
+  "fields:bio_species_or_group+bio_species_code+bio_call_description": {
+    "samples": 6,
+    "hard": {
+      "correct": 0,
+      "total": 6,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 6,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 1,
+      "total": 18,
+      "accuracy": 0.055556
+    }
+  },
+  "fields:bpsk_symbol_rate": {
+    "samples": 42,
+    "hard": {
+      "correct": 5,
+      "total": 42,
+      "accuracy": 0.119048
+    },
+    "strict": {
+      "correct": 5,
+      "total": 42,
+      "accuracy": 0.119048
+    },
+    "mean": {
+      "correct": 5,
+      "total": 42,
+      "accuracy": 0.119048
+    }
+  },
+  "fields:bpsk_symbol_rate+channel_condition": {
+    "samples": 2,
+    "hard": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 4,
+      "accuracy": 0.0
+    }
+  },
+  "fields:bpsk_symbol_rate+signal_type": {
+    "samples": 4,
+    "hard": {
+      "correct": 0,
+      "total": 4,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 4,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 8,
+      "accuracy": 0.0
+    }
+  },
+  "fields:bpsk_symbol_rate+signal_type+channel_condition": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    }
+  },
+  "fields:bpsk_symbol_rate+signal_type+noise_level": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    }
+  },
+  "fields:channel_condition": {
+    "samples": 25,
+    "hard": {
+      "correct": 5,
+      "total": 25,
+      "accuracy": 0.2
+    },
+    "strict": {
+      "correct": 9,
+      "total": 25,
+      "accuracy": 0.36
+    },
+    "mean": {
+      "correct": 9,
+      "total": 25,
+      "accuracy": 0.36
+    }
+  },
+  "fields:channel_condition+bpsk_symbol_rate": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    }
+  },
+  "fields:channel_condition+bpsk_symbol_rate+signal_type": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    }
+  },
+  "fields:channel_condition+fsk_order": {
+    "samples": 3,
+    "hard": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 6,
+      "accuracy": 0.0
+    }
+  },
+  "fields:channel_condition+fsk_order+signal_type": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    }
+  },
+  "fields:channel_condition+lfm_direction": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0
+    },
+    "mean": {
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0
+    }
+  },
+  "fields:channel_condition+noise_level": {
+    "samples": 2,
+    "hard": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 2,
+      "total": 4,
+      "accuracy": 0.5
+    }
+  },
+  "fields:channel_condition+noise_level+fsk_order": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    }
+  },
+  "fields:channel_condition+noise_level+lfm_direction": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 2,
+      "total": 3,
+      "accuracy": 0.666667
+    }
+  },
+  "fields:channel_condition+signal_type": {
+    "samples": 6,
+    "hard": {
+      "correct": 0,
+      "total": 6,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 6,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 1,
+      "total": 12,
+      "accuracy": 0.083333
+    }
+  },
+  "fields:channel_condition+signal_type+noise_level": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 1,
+      "total": 3,
+      "accuracy": 0.333333
+    }
+  },
+  "fields:fsk_order": {
+    "samples": 40,
+    "hard": {
+      "correct": 6,
+      "total": 40,
+      "accuracy": 0.15
+    },
+    "strict": {
+      "correct": 25,
+      "total": 40,
+      "accuracy": 0.625
+    },
+    "mean": {
+      "correct": 25,
+      "total": 40,
+      "accuracy": 0.625
+    }
+  },
+  "fields:fsk_order+channel_condition": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    }
+  },
+  "fields:fsk_order+noise_level": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5
+    }
+  },
+  "fields:fsk_order+noise_level+signal_type": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    }
+  },
+  "fields:fsk_order+signal_type": {
+    "samples": 6,
+    "hard": {
+      "correct": 0,
+      "total": 6,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 3,
+      "total": 6,
+      "accuracy": 0.5
+    },
+    "mean": {
+      "correct": 9,
+      "total": 12,
+      "accuracy": 0.75
+    }
+  },
+  "fields:fsk_order+signal_type+noise_level": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 2,
+      "total": 3,
+      "accuracy": 0.666667
+    }
+  },
+  "fields:lfm_direction": {
+    "samples": 35,
+    "hard": {
+      "correct": 13,
+      "total": 35,
+      "accuracy": 0.371429
+    },
+    "strict": {
+      "correct": 35,
+      "total": 35,
+      "accuracy": 1.0
+    },
+    "mean": {
+      "correct": 35,
+      "total": 35,
+      "accuracy": 1.0
+    }
+  },
+  "fields:lfm_direction+channel_condition": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0
+    },
+    "mean": {
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0
+    }
+  },
+  "fields:lfm_direction+noise_level": {
+    "samples": 2,
+    "hard": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5
+    },
+    "mean": {
+      "correct": 3,
+      "total": 4,
+      "accuracy": 0.75
+    }
+  },
+  "fields:lfm_direction+signal_type": {
+    "samples": 3,
+    "hard": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 3,
+      "total": 6,
+      "accuracy": 0.5
+    }
+  },
+  "fields:main_frequency_hz": {
+    "samples": 78,
+    "hard": {
+      "correct": 63,
+      "total": 78,
+      "accuracy": 0.807692
+    },
+    "strict": {
+      "correct": 63,
+      "total": 78,
+      "accuracy": 0.807692
+    },
+    "mean": {
+      "correct": 63,
+      "total": 78,
+      "accuracy": 0.807692
+    }
+  },
+  "fields:main_frequency_hz+channel_condition+noise_level": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 2,
+      "total": 3,
+      "accuracy": 0.666667
+    }
+  },
+  "fields:main_frequency_hz+noise_level": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5
+    }
+  },
+  "fields:main_frequency_hz+noise_level+channel_condition": {
+    "samples": 2,
+    "hard": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 2,
+      "total": 6,
+      "accuracy": 0.333333
+    }
+  },
+  "fields:main_frequency_hz+signal_type": {
+    "samples": 2,
+    "hard": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5
+    },
+    "mean": {
+      "correct": 2,
+      "total": 4,
+      "accuracy": 0.5
+    }
+  },
+  "fields:main_frequency_hz+signal_type+noise_level": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 2,
+      "total": 3,
+      "accuracy": 0.666667
+    }
+  },
+  "fields:noise_level": {
+    "samples": 33,
+    "hard": {
+      "correct": 9,
+      "total": 33,
+      "accuracy": 0.272727
+    },
+    "strict": {
+      "correct": 9,
+      "total": 33,
+      "accuracy": 0.272727
+    },
+    "mean": {
+      "correct": 9,
+      "total": 33,
+      "accuracy": 0.272727
+    }
+  },
+  "fields:noise_level+bpsk_symbol_rate+signal_type": {
+    "samples": 2,
+    "hard": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 1,
+      "total": 6,
+      "accuracy": 0.166667
+    }
+  },
+  "fields:noise_level+channel_condition": {
+    "samples": 4,
+    "hard": {
+      "correct": 0,
+      "total": 4,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 4,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 4,
+      "total": 8,
+      "accuracy": 0.5
+    }
+  },
+  "fields:noise_level+fsk_order": {
+    "samples": 4,
+    "hard": {
+      "correct": 0,
+      "total": 4,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 4,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 2,
+      "total": 8,
+      "accuracy": 0.25
+    }
+  },
+  "fields:noise_level+fsk_order+signal_type": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 1,
+      "total": 3,
+      "accuracy": 0.333333
+    }
+  },
+  "fields:noise_level+lfm_direction": {
+    "samples": 5,
+    "hard": {
+      "correct": 0,
+      "total": 5,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 5,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 5,
+      "total": 10,
+      "accuracy": 0.5
+    }
+  },
+  "fields:noise_level+lfm_direction+signal_type": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 1,
+      "total": 3,
+      "accuracy": 0.333333
+    }
+  },
+  "fields:noise_level+main_frequency_hz": {
+    "samples": 3,
+    "hard": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 3,
+      "total": 6,
+      "accuracy": 0.5
+    }
+  },
+  "fields:noise_level+signal_type": {
+    "samples": 22,
+    "hard": {
+      "correct": 0,
+      "total": 22,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 22,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 1,
+      "total": 44,
+      "accuracy": 0.022727
+    }
+  },
+  "fields:noise_level+signal_type+bpsk_symbol_rate": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    }
+  },
+  "fields:noise_level+signal_type+channel_condition": {
+    "samples": 4,
+    "hard": {
+      "correct": 0,
+      "total": 4,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 4,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 5,
+      "total": 12,
+      "accuracy": 0.416667
+    }
+  },
+  "fields:noise_level+signal_type+main_frequency_hz": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 1,
+      "total": 3,
+      "accuracy": 0.333333
+    }
+  },
+  "fields:signal_type": {
+    "samples": 71,
+    "hard": {
+      "correct": 15,
+      "total": 71,
+      "accuracy": 0.211268
+    },
+    "strict": {
+      "correct": 25,
+      "total": 71,
+      "accuracy": 0.352113
+    },
+    "mean": {
+      "correct": 25,
+      "total": 71,
+      "accuracy": 0.352113
+    }
+  },
+  "fields:signal_type+bpsk_symbol_rate": {
+    "samples": 7,
+    "hard": {
+      "correct": 0,
+      "total": 7,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 7,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 14,
+      "accuracy": 0.0
+    }
+  },
+  "fields:signal_type+bpsk_symbol_rate+noise_level": {
+    "samples": 2,
+    "hard": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 6,
+      "accuracy": 0.0
+    }
+  },
+  "fields:signal_type+channel_condition": {
+    "samples": 14,
+    "hard": {
+      "correct": 0,
+      "total": 14,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 14,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 9,
+      "total": 28,
+      "accuracy": 0.321429
+    }
+  },
+  "fields:signal_type+channel_condition+fsk_order": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    }
+  },
+  "fields:signal_type+channel_condition+main_frequency_hz": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0
+    },
+    "mean": {
+      "correct": 3,
+      "total": 3,
+      "accuracy": 1.0
+    }
+  },
+  "fields:signal_type+channel_condition+noise_level": {
+    "samples": 4,
+    "hard": {
+      "correct": 0,
+      "total": 4,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 4,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 3,
+      "total": 12,
+      "accuracy": 0.25
+    }
+  },
+  "fields:signal_type+fsk_order": {
+    "samples": 2,
+    "hard": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5
+    },
+    "mean": {
+      "correct": 3,
+      "total": 4,
+      "accuracy": 0.75
+    }
+  },
+  "fields:signal_type+lfm_direction": {
+    "samples": 7,
+    "hard": {
+      "correct": 0,
+      "total": 7,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 7,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 7,
+      "total": 14,
+      "accuracy": 0.5
+    }
+  },
+  "fields:signal_type+lfm_direction+channel_condition": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 1,
+      "total": 3,
+      "accuracy": 0.333333
+    }
+  },
+  "fields:signal_type+main_frequency_hz": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0
+    },
+    "mean": {
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0
+    }
+  },
+  "fields:signal_type+main_frequency_hz+channel_condition": {
+    "samples": 2,
+    "hard": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5
+    },
+    "mean": {
+      "correct": 5,
+      "total": 6,
+      "accuracy": 0.833333
+    }
+  },
+  "fields:signal_type+main_frequency_hz+noise_level": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 2,
+      "total": 3,
+      "accuracy": 0.666667
+    }
+  },
+  "fields:signal_type+noise_level": {
+    "samples": 24,
+    "hard": {
+      "correct": 0,
+      "total": 24,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 24,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 2,
+      "total": 48,
+      "accuracy": 0.041667
+    }
+  },
+  "fields:signal_type+noise_level+bpsk_symbol_rate": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    }
+  },
+  "fields:signal_type+noise_level+channel_condition": {
+    "samples": 3,
+    "hard": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 2,
+      "total": 9,
+      "accuracy": 0.222222
+    }
+  },
+  "fields:signal_type+noise_level+fsk_order": {
+    "samples": 2,
+    "hard": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 6,
+      "accuracy": 0.0
+    }
+  },
+  "fields:signal_type+noise_level+lfm_direction": {
+    "samples": 1,
+    "hard": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 1,
+      "total": 3,
+      "accuracy": 0.333333
+    }
+  },
+  "fields:signal_type+noise_level+main_frequency_hz": {
+    "samples": 3,
+    "hard": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 6,
+      "total": 9,
+      "accuracy": 0.666667
+    }
+  },
+  "overall:overall": {
+    "samples": 639,
+    "hard": {
+      "correct": 122,
+      "total": 639,
+      "accuracy": 0.190923
+    },
+    "strict": {
+      "correct": 188,
+      "total": 639,
+      "accuracy": 0.29421
+    },
+    "mean": {
+      "correct": 285,
+      "total": 922,
+      "accuracy": 0.309111
+    }
+  },
+  "task:bio_call_description_open_short": {
+    "samples": 5,
+    "hard": {
+      "correct": 0,
+      "total": 5,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 5,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 5,
+      "accuracy": 0.0
+    }
+  },
+  "task:bio_species_code_choice": {
+    "samples": 6,
+    "hard": {
+      "correct": 1,
+      "total": 6,
+      "accuracy": 0.166667
+    },
+    "strict": {
+      "correct": 1,
+      "total": 6,
+      "accuracy": 0.166667
+    },
+    "mean": {
+      "correct": 1,
+      "total": 6,
+      "accuracy": 0.166667
+    }
+  },
+  "task:bio_species_code_open_short": {
+    "samples": 13,
+    "hard": {
+      "correct": 0,
+      "total": 13,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 13,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 13,
+      "accuracy": 0.0
+    }
+  },
+  "task:bio_species_or_group_choice": {
+    "samples": 24,
+    "hard": {
+      "correct": 2,
+      "total": 24,
+      "accuracy": 0.083333
+    },
+    "strict": {
+      "correct": 2,
+      "total": 24,
+      "accuracy": 0.083333
+    },
+    "mean": {
+      "correct": 2,
+      "total": 24,
+      "accuracy": 0.083333
+    }
+  },
+  "task:bio_species_or_group_open_short": {
+    "samples": 41,
+    "hard": {
+      "correct": 3,
+      "total": 41,
+      "accuracy": 0.073171
+    },
+    "strict": {
+      "correct": 3,
+      "total": 41,
+      "accuracy": 0.073171
+    },
+    "mean": {
+      "correct": 3,
+      "total": 41,
+      "accuracy": 0.073171
+    }
+  },
+  "task:bpsk_symbol_rate_choice": {
+    "samples": 16,
+    "hard": {
+      "correct": 2,
+      "total": 16,
+      "accuracy": 0.125
+    },
+    "strict": {
+      "correct": 2,
+      "total": 16,
+      "accuracy": 0.125
+    },
+    "mean": {
+      "correct": 2,
+      "total": 16,
+      "accuracy": 0.125
+    }
+  },
+  "task:bpsk_symbol_rate_open_short": {
+    "samples": 26,
+    "hard": {
+      "correct": 3,
+      "total": 26,
+      "accuracy": 0.115385
+    },
+    "strict": {
+      "correct": 3,
+      "total": 26,
+      "accuracy": 0.115385
+    },
+    "mean": {
+      "correct": 3,
+      "total": 26,
+      "accuracy": 0.115385
+    }
+  },
+  "task:channel_condition_choice": {
+    "samples": 6,
+    "hard": {
+      "correct": 5,
+      "total": 6,
+      "accuracy": 0.833333
+    },
+    "strict": {
+      "correct": 5,
+      "total": 6,
+      "accuracy": 0.833333
+    },
+    "mean": {
+      "correct": 5,
+      "total": 6,
+      "accuracy": 0.833333
+    }
+  },
+  "task:channel_condition_open_short": {
+    "samples": 19,
+    "hard": {
+      "correct": 0,
+      "total": 19,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 4,
+      "total": 19,
+      "accuracy": 0.210526
+    },
+    "mean": {
+      "correct": 4,
+      "total": 19,
+      "accuracy": 0.210526
+    }
+  },
+  "task:fsk_order_choice": {
+    "samples": 15,
+    "hard": {
+      "correct": 6,
+      "total": 15,
+      "accuracy": 0.4
+    },
+    "strict": {
+      "correct": 6,
+      "total": 15,
+      "accuracy": 0.4
+    },
+    "mean": {
+      "correct": 6,
+      "total": 15,
+      "accuracy": 0.4
+    }
+  },
+  "task:fsk_order_open_short": {
+    "samples": 25,
+    "hard": {
+      "correct": 0,
+      "total": 25,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 19,
+      "total": 25,
+      "accuracy": 0.76
+    },
+    "mean": {
+      "correct": 19,
+      "total": 25,
+      "accuracy": 0.76
+    }
+  },
+  "task:lfm_direction_choice": {
+    "samples": 13,
+    "hard": {
+      "correct": 13,
+      "total": 13,
+      "accuracy": 1.0
+    },
+    "strict": {
+      "correct": 13,
+      "total": 13,
+      "accuracy": 1.0
+    },
+    "mean": {
+      "correct": 13,
+      "total": 13,
+      "accuracy": 1.0
+    }
+  },
+  "task:lfm_direction_open_short": {
+    "samples": 22,
+    "hard": {
+      "correct": 0,
+      "total": 22,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 22,
+      "total": 22,
+      "accuracy": 1.0
+    },
+    "mean": {
+      "correct": 22,
+      "total": 22,
+      "accuracy": 1.0
+    }
+  },
+  "task:main_frequency_choice": {
+    "samples": 31,
+    "hard": {
+      "correct": 21,
+      "total": 31,
+      "accuracy": 0.677419
+    },
+    "strict": {
+      "correct": 21,
+      "total": 31,
+      "accuracy": 0.677419
+    },
+    "mean": {
+      "correct": 21,
+      "total": 31,
+      "accuracy": 0.677419
+    }
+  },
+  "task:main_frequency_open_short": {
+    "samples": 47,
+    "hard": {
+      "correct": 42,
+      "total": 47,
+      "accuracy": 0.893617
+    },
+    "strict": {
+      "correct": 42,
+      "total": 47,
+      "accuracy": 0.893617
+    },
+    "mean": {
+      "correct": 42,
+      "total": 47,
+      "accuracy": 0.893617
+    }
+  },
+  "task:multi_field_open_json": {
+    "samples": 226,
+    "hard": {
+      "correct": 0,
+      "total": 226,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 11,
+      "total": 226,
+      "accuracy": 0.048673
+    },
+    "mean": {
+      "correct": 108,
+      "total": 509,
+      "accuracy": 0.212181
+    }
+  },
+  "task:noise_level_choice": {
+    "samples": 15,
+    "hard": {
+      "correct": 9,
+      "total": 15,
+      "accuracy": 0.6
+    },
+    "strict": {
+      "correct": 9,
+      "total": 15,
+      "accuracy": 0.6
+    },
+    "mean": {
+      "correct": 9,
+      "total": 15,
+      "accuracy": 0.6
+    }
+  },
+  "task:noise_level_open_short": {
+    "samples": 18,
+    "hard": {
+      "correct": 0,
+      "total": 18,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 0,
+      "total": 18,
+      "accuracy": 0.0
+    },
+    "mean": {
+      "correct": 0,
+      "total": 18,
+      "accuracy": 0.0
+    }
+  },
+  "task:signal_type_choice": {
+    "samples": 30,
+    "hard": {
+      "correct": 15,
+      "total": 30,
+      "accuracy": 0.5
+    },
+    "strict": {
+      "correct": 15,
+      "total": 30,
+      "accuracy": 0.5
+    },
+    "mean": {
+      "correct": 15,
+      "total": 30,
+      "accuracy": 0.5
+    }
+  },
+  "task:signal_type_open_short": {
+    "samples": 41,
+    "hard": {
+      "correct": 0,
+      "total": 41,
+      "accuracy": 0.0
+    },
+    "strict": {
+      "correct": 10,
+      "total": 41,
+      "accuracy": 0.243902
+    },
+    "mean": {
+      "correct": 10,
+      "total": 41,
+      "accuracy": 0.243902
+    }
+  },
+  "field:bio_call_description": {
+    "correct": 1,
+    "total": 31,
+    "accuracy": 0.032258
+  },
+  "field:bio_species_code": {
+    "correct": 1,
+    "total": 59,
+    "accuracy": 0.016949
+  },
+  "field:bio_species_or_group": {
+    "correct": 5,
+    "total": 115,
+    "accuracy": 0.043478
+  },
+  "field:bpsk_symbol_rate": {
+    "correct": 5,
+    "total": 65,
+    "accuracy": 0.076923
+  },
+  "field:channel_condition": {
+    "correct": 36,
+    "total": 85,
+    "accuracy": 0.423529
+  },
+  "field:fsk_order": {
+    "correct": 33,
+    "total": 65,
+    "accuracy": 0.507692
+  },
+  "field:lfm_direction": {
+    "correct": 58,
+    "total": 58,
+    "accuracy": 1.0
+  },
+  "field:main_frequency_hz": {
+    "correct": 80,
+    "total": 97,
+    "accuracy": 0.824742
+  },
+  "field:noise_level": {
+    "correct": 16,
+    "total": 138,
+    "accuracy": 0.115942
+  },
+  "field:signal_type": {
+    "correct": 50,
+    "total": 209,
+    "accuracy": 0.239234
+  }
+}

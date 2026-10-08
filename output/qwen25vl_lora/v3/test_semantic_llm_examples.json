@@ -1,0 +1,341 @@
+[
+  {
+    "id": "vlmft_002375_multi_field_open_json_0082",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "bpsk_symbol_rate",
+      "signal_type",
+      "noise_level"
+    ],
+    "field_count": 3,
+    "field_signature": "bpsk_symbol_rate+signal_type+noise_level",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "bpsk_symbol_rate",
+        "correct": false,
+        "reason": "Answered 25 symbol/s, expected 50 symbol/s."
+      },
+      {
+        "field": "signal_type",
+        "correct": true,
+        "reason": "Matches expected BPSK."
+      },
+      {
+        "field": "noise_level",
+        "correct": true,
+        "reason": "Matches expected clean."
+      }
+    ],
+    "expected_answer": "{\"bpsk_symbol_rate\":\"50 symbol/s\",\"signal_type\":\"BPSK\",\"noise_level\":\"clean\"}",
+    "response": "{\"bpsk_symbol_rate\":\"25 symbol/s\",\"signal_type\":\"BPSK\",\"noise_level\":\"clean\"}"
+  },
+  {
+    "id": "vlmft_001056_multi_field_open_json_0395",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "bpsk_symbol_rate",
+      "noise_level",
+      "channel_condition"
+    ],
+    "field_count": 3,
+    "field_signature": "bpsk_symbol_rate+noise_level+channel_condition",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "bpsk_symbol_rate",
+        "correct": false,
+        "reason": "Answered 20 symbol/s, expected 25 symbol/s."
+      },
+      {
+        "field": "noise_level",
+        "correct": true,
+        "reason": "Matches real_noise_light."
+      },
+      {
+        "field": "channel_condition",
+        "correct": true,
+        "reason": "Matches direct."
+      }
+    ],
+    "expected_answer": "{\"bpsk_symbol_rate\":\"25 symbol/s\",\"noise_level\":\"real_noise_light\",\"channel_condition\":\"direct\"}",
+    "response": "{\"bpsk_symbol_rate\":\"20 symbol/s\",\"noise_level\":\"real_noise_light\",\"channel_condition\":\"direct\"}"
+  },
+  {
+    "id": "vlmft_001675_multi_field_open_json_0249",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "bpsk_symbol_rate",
+      "noise_level",
+      "signal_type"
+    ],
+    "field_count": 3,
+    "field_signature": "bpsk_symbol_rate+noise_level+signal_type",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "bpsk_symbol_rate",
+        "correct": false,
+        "reason": "Gave 20 symbol/s, expected 25 symbol/s."
+      },
+      {
+        "field": "noise_level",
+        "correct": true,
+        "reason": "Matches expected clean."
+      },
+      {
+        "field": "signal_type",
+        "correct": true,
+        "reason": "Matches expected BPSK."
+      }
+    ],
+    "expected_answer": "{\"bpsk_symbol_rate\":\"25 symbol/s\",\"noise_level\":\"clean\",\"signal_type\":\"BPSK\"}",
+    "response": "{\"bpsk_symbol_rate\":\"20 symbol/s\",\"noise_level\":\"clean\",\"signal_type\":\"BPSK\"}"
+  },
+  {
+    "id": "vlmft_004257_multi_field_open_json_1168",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "bio_call_description",
+      "bio_species_or_group",
+      "bio_species_code"
+    ],
+    "field_count": 3,
+    "field_signature": "bio_call_description+bio_species_or_group+bio_species_code",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "bio_call_description",
+        "correct": false,
+        "reason": "Different archival description; only broad call types overlap."
+      },
+      {
+        "field": "bio_species_or_group",
+        "correct": true,
+        "reason": "Species matches Stenella longirostris."
+      },
+      {
+        "field": "bio_species_code",
+        "correct": false,
+        "reason": "Species code is missing."
+      }
+    ],
+    "expected_answer": "{\"bio_call_description\":\"Good whistles (6) and clicks\",\"bio_species_or_group\":\"Stenella longirostris\",\"bio_species_code\":\"BD15L\"}",
+    "response": "{\"bio_call_description\":\"N19 30' W156 Whistle, clicks; Cut made from RN7100000a (first 10:00 segment of a 48:00 tape)\",\"bio_species_or_group\":\"Stenella longirostris"
+  },
+  {
+    "id": "vlmft_004565_multi_field_open_json_0817",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "bio_call_description",
+      "bio_species_or_group"
+    ],
+    "field_count": 2,
+    "field_signature": "bio_call_description+bio_species_or_group",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "bio_call_description",
+        "correct": false,
+        "reason": "Call description does not match I; D."
+      },
+      {
+        "field": "bio_species_or_group",
+        "correct": true,
+        "reason": "Species matches Stenella attenuata."
+      }
+    ],
+    "expected_answer": "{\"bio_call_description\":\"I; D\",\"bio_species_or_group\":\"Stenella attenuata\"}",
+    "response": "{\"bio_call_description\":\"X Many overlapping clicks; whistle\",\"bio_species_or_group\":\"Stenella attenuata\"}"
+  },
+  {
+    "id": "vlmft_004355_multi_field_open_json_0956",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "bio_species_or_group",
+      "bio_call_description"
+    ],
+    "field_count": 2,
+    "field_signature": "bio_species_or_group+bio_call_description",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "bio_species_or_group",
+        "correct": true,
+        "reason": "Species matches Balaena mysticetus."
+      },
+      {
+        "field": "bio_call_description",
+        "correct": false,
+        "reason": "Different file ID and segment description."
+      }
+    ],
+    "expected_answer": "{\"bio_species_or_group\":\"Balaena mysticetus\",\"bio_call_description\":\"From streamed file 88006G; kay (long tape streamed in segments)\"}",
+    "response": "{\"bio_species_or_group\":\"Balaena mysticetus\",\"bio_call_description\":\"From streamed file 88005C; KAY (first 10:00 segment of a 48:00 tape)\"}"
+  },
+  {
+    "id": "vlmft_004128_multi_field_open_json_1156",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "bio_species_or_group",
+      "bio_species_code",
+      "bio_call_description"
+    ],
+    "field_count": 3,
+    "field_signature": "bio_species_or_group+bio_species_code+bio_call_description",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "bio_species_or_group",
+        "correct": false,
+        "reason": "Wrong species; expected Stenella longirostris."
+      },
+      {
+        "field": "bio_species_code",
+        "correct": false,
+        "reason": "Wrong code; expected BD15L."
+      },
+      {
+        "field": "bio_call_description",
+        "correct": true,
+        "reason": "Call description matches expected."
+      }
+    ],
+    "expected_answer": "{\"bio_species_or_group\":\"Stenella longirostris\",\"bio_species_code\":\"BD15L\",\"bio_call_description\":\"N19 30' W156 Whistles; clicks\"}",
+    "response": "{\"bio_species_or_group\":\"Stenella coeruleoalba\",\"bio_species_code\":\"BD15C\",\"bio_call_description\":\"N19 30' W156 Whistles; clicks\"}"
+  },
+  {
+    "id": "vlmft_004311_multi_field_open_json_1206",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "bio_species_or_group",
+      "bio_species_code",
+      "bio_call_description"
+    ],
+    "field_count": 3,
+    "field_signature": "bio_species_or_group+bio_species_code+bio_call_description",
+    "hard_correct": false,
+    "strict_correct": true,
+    "field_results": [
+      {
+        "field": "bio_species_or_group",
+        "correct": true,
+        "reason": "Species matches expected."
+      },
+      {
+        "field": "bio_species_code",
+        "correct": true,
+        "reason": "Code matches expected."
+      },
+      {
+        "field": "bio_call_description",
+        "correct": true,
+        "reason": "Contains the expected pulsed whistle description; extra note is not contradictory."
+      }
+    ],
+    "expected_answer": "{\"bio_species_or_group\":\"Stenella frontalis\",\"bio_species_code\":\"BD15F\",\"bio_call_description\":\"Pulsed whistle\"}",
+    "response": "{\"bio_species_or_group\":\"Stenella frontalis\",\"bio_species_code\":\"BD15F\",\"bio_call_description\":\"Pulsed whistle; Good cut\"}"
+  },
+  {
+    "id": "vlmft_004132_multi_field_open_json_0971",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "bio_call_description",
+      "bio_species_or_group"
+    ],
+    "field_count": 2,
+    "field_signature": "bio_call_description+bio_species_or_group",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "bio_call_description",
+        "correct": false,
+        "reason": "Wrong file/segment details; expected 88005B second segment."
+      },
+      {
+        "field": "bio_species_or_group",
+        "correct": true,
+        "reason": "Species matches expected."
+      }
+    ],
+    "expected_answer": "{\"bio_call_description\":\"X From streamed file 88005B; KAY (second 10:00 segment of a 48:00 tape)\",\"bio_species_or_group\":\"Balaena mysticetus\"}",
+    "response": "{\"bio_call_description\":\"From streamed file 88005C; KAY (Third 10:00 segment of a 48:00 tape)\",\"bio_species_or_group\":\"Balaena mysticetus\"}"
+  },
+  {
+    "id": "vlmft_004685_multi_field_open_json_0847",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "bio_call_description",
+      "bio_species_or_group"
+    ],
+    "field_count": 2,
+    "field_signature": "bio_call_description+bio_species_or_group",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "bio_call_description",
+        "correct": false,
+        "reason": "Description/location differs from expected X N41 31; 5' W069 30."
+      },
+      {
+        "field": "bio_species_or_group",
+        "correct": true,
+        "reason": "Species matches Balaenoptera physalus."
+      }
+    ],
+    "expected_answer": "{\"bio_call_description\":\"X N41 31; 5' W069 30\",\"bio_species_or_group\":\"Balaenoptera physalus\"}",
+    "response": "{\"bio_call_description\":\"X N15 30; 92 W61 32\",\"bio_species_or_group\":\"Balaenoptera physalus\"}"
+  },
+  {
+    "id": "vlmft_004139_multi_field_open_json_1194",
+    "task": "multi_field_open_json",
+    "answer_format": "open_json",
+    "fields": [
+      "bio_species_or_group",
+      "bio_species_code",
+      "bio_call_description"
+    ],
+    "field_count": 3,
+    "field_signature": "bio_species_or_group+bio_species_code+bio_call_description",
+    "hard_correct": false,
+    "strict_correct": false,
+    "field_results": [
+      {
+        "field": "bio_species_or_group",
+        "correct": true,
+        "reason": "Species matches Globicephala melaena."
+      },
+      {
+        "field": "bio_species_code",
+        "correct": true,
+        "reason": "Code matches BE3C."
+      },
+      {
+        "field": "bio_call_description",
+        "correct": false,
+        "reason": "Missing/changed 'Session IV'; expected full description Session IV Whistle; clicks."
+      }
+    ],
+    "expected_answer": "{\"bio_species_or_group\":\"Globicephala melaena\",\"bio_species_code\":\"BE3C\",\"bio_call_description\":\"Session IV Whistle; clicks\"}",
+    "response": "{\"bio_species_or_group\":\"Globicephala melaena\",\"bio_species_code\":\"BE3C\",\"bio_call_description\":\"X Whistle; clicks\"}"
+  }
+]
